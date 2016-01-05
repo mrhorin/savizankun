@@ -27,6 +27,7 @@ header {
   width: 90%;
   background: rgba(255, 255, 255, 0.6) !important;
   padding-top: 25px;
+  padding-bottom: 25px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px; }
@@ -115,5 +116,10 @@ ul#share > a > li.hatena:hover {
 #about > ul > ol {
   margin: 0px;
   padding: 0px; }
+
+.notice {
+  font-size: 0.7em;
+  text-align: left;
+  margin-bottom: -10px; }
 
 /*# sourceMappingURL=style.css.map */

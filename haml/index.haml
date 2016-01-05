@@ -1,6 +1,223 @@
 !!!
 %html
   %head
-    %title サビ残くん
+    %title サビ残くん - サービス残業代計算サイト
+    %meta( http-equiv="Content-Type" content="text/html" charset="utf-8" )
+    %meta( name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta( name="description" content="国内一のサービス残業代の計算サービス")
+    %meta( name="keywords" content="サービス残業,転職,ブラック企業,求人,就職,過労死,サビ残")
+    -# favicon
+    %link( rel="shortcut icon" href="./img/favicon.ico")
+    -# Bootstrap
+    %link( rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" )
+    %link( rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" )
+    -# font-awesome
+    %link( rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.min.css" media="all" )
+    -# Google Fonts
+    %link( rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Candal' )
+    -# CSS
+    %link( rel="stylesheet" type="text/css" href="./css/style.css" )
+    -# %link( rel="stylesheet" type="text/css" href="./css/validationEngine.jquery.css")
   %body
-    %p ここに本文
+    -# --------------- header ---------------
+    %header
+      %div.container
+        %row
+          %div.col-sm-6
+            -# タイトル画像
+            %img.img-responsive{ src: "./img/savizankun.png" }
+            -# シェアボタン
+            %ul#share
+              -# Twitter
+              %a( href="http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！" onclick="shareTwitter();")
+                %li.twitter
+                  %i.fa.fa-twitter
+              -# Facebook
+              %a( href="http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-" onclick="shareFacebook();" )
+                %li.fb
+                  %i.fa.fa-facebook
+              -# Hatena
+              %a( href="http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com" onclick="shareHatena();" )
+                %li.hatena
+                  %span.hatena-icon B!
+            -# お知らせ
+            %div#info
+              %div.info-title
+                %i.fa.fa-info-circle
+                お知らせ（2016/01/05）
+              デザインと計算アルゴリズムを大幅改変しました。
+
+          %div.col-sm-6
+            -# 当サイトについて
+            %div#about
+              %legend
+                %i.fa.fa-question-circle
+                当サイトについて
+              %ul
+                %li サービス残業代を計算できるWebサービスです。
+                %li 当サイトによる計算結果はあくまで目安です。
+                %li 当然ですが入力情報の収集・二次配布等は一切行っていません。安心してご利用下さい。
+                %li 入力についての諸注意
+                %ol
+                  %li 月給は支給額から手当を除いた額を入力。
+                  %li 年間休日は雇用契約書の記載通り、わからない場合は、週休２日の場合は年間105日+祝祭日+長期休暇になるので、それを目安に入力。有給休暇は含みません。
+                  %li 休憩は分単位で入力。
+                  %li 平均退勤時刻は、残業を含む平均的な退勤時刻を入力して下さい。
+              -# その他FAQ
+              %div#faq( style="text-align: right;" )
+                %a.btn.btn-default( href="" role="button" ) その他FAQ
+    -# --------------- main ---------------
+    %div#main
+      %div.container.content
+        %row
+          %div.col-sm-6.col-sm-offset-3
+            -# 計算用フォーム
+            %form#keisan
+              %img( src="./img/keisan.png" class="img-responsive" style="margin: auto; padding:0px 0px 20px 0px;" )
+              -# 月給
+              %div.form-group
+                %label.col-sm-4.control-label( style="text-align: right" ) 月給
+                %div.input-group
+                  %input#gekkyu.form-control( required pattern="^[0-9]+$" )
+                  %div.input-group-addon 円
+                %div.notice.col-sm-offset-4 ※支給額から各種手当を除いた額
+              -# 年間休日
+              %div.form-group
+                %label.col-sm-4.control-label( style="text-align: right" ) 年間休日
+                %div.input-group
+                  %input#nenkyu.form-control( required value="105" )
+                  %div.input-group-addon 日
+              -# 週休
+              %div.form-group
+                %label.col-sm-4.control-label( style="text-align: right" ) 週休
+                %div.input-group
+                  %input#syukyu.form-control( required value="2" )
+                  %div.input-group-addon 日
+              -# 休憩時間
+              %div.form-group
+                %label.col-sm-4.control-label( style="text-align: right" ) 休憩時間
+                %div.input-group
+                  %input#syukyu.form-control( required value="60" )
+                  %div.input-group-addon 分
+                %div.notice.col-sm-offset-4 ※分単位で入力
+              -# 出勤時刻
+              %div.form-group
+                %label.col-sm-4.control-label( style="text-align: right" ) 出勤時刻
+                %select( name="startWorkHour" )
+                  %option( value="0") 0
+                  %option( value="1") 1
+                  %option( value="2") 2
+                  %option( value="3") 3
+                  %option( value="4") 4
+                  %option( value="5") 5
+                  %option( value="6") 6
+                  %option( value="7") 7
+                  %option( value="8") 8
+                  %option( value="9" selected ) 9
+                  %option( value="10") 10
+                  %option( value="11") 11
+                  %option( value="12") 12
+                  %option( value="13") 13
+                  %option( value="14") 14
+                  %option( value="15") 15
+                  %option( value="16") 16
+                  %option( value="17") 17
+                  %option( value="18") 18
+                  %option( value="19") 19
+                  %option( value="20") 20
+                  %option( value="21") 21
+                  %option( value="22") 22
+                  %option( value="23") 23
+                %span 時
+                %select( name="startWorkMin" )
+                  %option( value="0" )0
+                  %option( value="15" )15
+                  %option( value="30" )30
+                  %option( value="45" )45
+                %span 分
+              -# 定時退勤時刻
+              %div.form-group
+                %label.col-sm-4.control-label( style="text-align: right" ) 定時退勤時刻
+                %select( name="endWorkHour" )
+                  %option( value="0") 0
+                  %option( value="1") 1
+                  %option( value="2") 2
+                  %option( value="3") 3
+                  %option( value="4") 4
+                  %option( value="5") 5
+                  %option( value="6") 6
+                  %option( value="7") 7
+                  %option( value="8") 8
+                  %option( value="9" ) 9
+                  %option( value="10") 10
+                  %option( value="11") 11
+                  %option( value="12") 12
+                  %option( value="13") 13
+                  %option( value="14") 14
+                  %option( value="15") 15
+                  %option( value="16") 16
+                  %option( value="17") 17
+                  %option( value="18" selected) 18
+                  %option( value="19") 19
+                  %option( value="20") 20
+                  %option( value="21") 21
+                  %option( value="22") 22
+                  %option( value="23") 23
+                %span 時
+                %select( name="endWorkMin" )
+                  %option( value="0" )0
+                  %option( value="15" )15
+                  %option( value="30" )30
+                  %option( value="45" )45
+                %span 分
+              -# 平均退勤時刻
+              %div.form-group
+                %label.col-sm-4.control-label( style="text-align: right" ) 平均退勤時刻
+                %select( name="overEndWorkHour" )
+                  %option( value="0") 0
+                  %option( value="1") 1
+                  %option( value="2") 2
+                  %option( value="3") 3
+                  %option( value="4") 4
+                  %option( value="5") 5
+                  %option( value="6") 6
+                  %option( value="7") 7
+                  %option( value="8") 8
+                  %option( value="9" ) 9
+                  %option( value="10") 10
+                  %option( value="11") 11
+                  %option( value="12") 12
+                  %option( value="13") 13
+                  %option( value="14") 14
+                  %option( value="15") 15
+                  %option( value="16") 16
+                  %option( value="17") 17
+                  %option( value="18" selected) 18
+                  %option( value="19") 19
+                  %option( value="20") 20
+                  %option( value="21") 21
+                  %option( value="22") 22
+                  %option( value="23") 23
+                %span 時
+                %select( name="overEndWorkMin" )
+                  %option( value="0" )0
+                  %option( value="15" )15
+                  %option( value="30" )30
+                  %option( value="45" )45
+                %span 分
+                %div.notice ※残業を含む平均的な退勤時刻を入力
+              -# 計算するボタン
+              %div.form-group
+                %button#keisan-btn.btn.btn-primary.col-sm-offset-4( data-toggle="modal" data-target="#myModal" disabled="disabled" )
+                  %i.fa.fa-hand-o-up
+                  計算する
+    -# -------------- footer --------------
+    %footer
+      %div.container
+        %row
+          %div.col-sm-12
+            %p( style="text-align: center;" ) Copyright &copy; 2013-2016 サビ残くん All Rights Reserved.
+    -# ------------ JavaScript ------------
+    %script( type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js" )
+    %script( type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js" )
+    %script( type="text/javascript" src="./js/main.js" )

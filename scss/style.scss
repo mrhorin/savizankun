@@ -2,5 +2,135 @@ $font: #556;
 $border: #e1e8ed;
 
 a{
-	text-decoration: none;
+  text-decoration: none;
+}
+html,body{
+  background-image: url("../img/bg.png");
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  color: $font;
+  font-family: 'Lucida Grande','Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+  font-size: 1em;
+  color: #333;
+}
+.container{
+  max-width: 870px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
+}
+header{
+  padding-top: 20px;
+}
+.content{
+  width: 90%;
+  background: rgba(255,255,255,0.6) !important;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+footer{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+// ------------ シェアボタン ------------
+ul#share{
+	height:auto;
+	margin: 0px;
+	padding: 0px;
+}
+ul#share>a>li{
+	display: inline-block;
+	text-align: center;
+  font-size: 25px;
+  color: #fff;
+	margin: 2px;
+	border-radius: 3px;
+	list-style:none;
+	vertical-align: middle;
+  cursor: pointer;
+}
+// Twitter
+ul#share>a>li.twitter{
+	background: #55acee;
+	box-shadow: 0 2px #2795e9;
+  padding: 2px 11px 1px 11px;
+}
+ul#share>a>li.twitter:hover{
+	background:#83c3f3;
+}
+// facebook
+ul#share>a>li.fb{
+	background:#3b5998;
+	box-shadow:0 2px #2d4373;
+  padding: 2px 15px 1px 15px;
+}
+ul#share>a>li.fb:hover{
+	background:#4c70ba;
+}
+// はてなブックマーク
+ul#share>a>li.hatena{
+	background:#2c6ebd;
+	box-shadow:0 2px #225694;
+  padding: 2px 8px 1px 8px;
+}
+ul#share>a>li.hatena:hover{
+	background:#4888d4;
+}
+.hatena-icon{
+	font-family: 'Candal', sans-serif;
+	vertical-align: bottom;
+	font-size: 24px;
+}
+
+// ---------- お知らせ ----------
+#info{
+  color: #111;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+.info-title{
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
+}
+
+// ---------- このサイトについて ----------
+#about{
+	font-size: 14px;
+	background-color: rgba(30, 30, 30, 0.6);
+	opacity: 0.9;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	padding: 13px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	color: white;
+	text-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
+}
+#about > legend{
+  margin-bottom: 10px;
+  font-size: 18px;
+	color: white;
+	text-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
+}
+#about > ul > li{
+	margin-left: -15px;
+}
+#about > ul > ol{
+  margin: 0px;
+  padding: 0px;
+}
+
+// ---------- 計算フォーム ----------
+.notice{
+  font-size: 0.7em;
+  text-align: left;
+  margin-bottom: -10px;
 }
