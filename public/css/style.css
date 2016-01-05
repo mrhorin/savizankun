@@ -122,4 +122,7 @@ ul#share > a > li.hatena:hover {
   text-align: left;
   margin-bottom: -10px; }
 
+input {
+  text-align: right; }
+
 /*# sourceMappingURL=style.css.map */

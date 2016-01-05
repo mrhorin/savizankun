@@ -15,9 +15,8 @@
     %link( rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.min.css" media="all" )
     -# Google Fonts
     %link( rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Candal' )
-    -# CSS
+    -# style
     %link( rel="stylesheet" type="text/css" href="./css/style.css" )
-    -# %link( rel="stylesheet" type="text/css" href="./css/validationEngine.jquery.css")
   %body
     -# --------------- header ---------------
     %header
@@ -72,32 +71,32 @@
         %row
           %div.col-sm-6.col-sm-offset-3
             -# 計算用フォーム
-            %form#keisan
+            %div#keisan
               %img( src="./img/keisan.png" class="img-responsive" style="margin: auto; padding:0px 0px 20px 0px;" )
               -# 月給
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 月給
                 %div.input-group
-                  %input#gekkyu.form-control( required pattern="^[0-9]+$" )
+                  %input#gekkyu.form-control
                   %div.input-group-addon 円
                 %div.notice.col-sm-offset-4 ※支給額から各種手当を除いた額
               -# 年間休日
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 年間休日
                 %div.input-group
-                  %input#nenkyu.form-control( required value="105" )
+                  %input#nenkyu.form-control( value="105" )
                   %div.input-group-addon 日
               -# 週休
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 週休
                 %div.input-group
-                  %input#syukyu.form-control( required value="2" )
+                  %input#syukyu.form-control( value="2" )
                   %div.input-group-addon 日
               -# 休憩時間
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 休憩時間
                 %div.input-group
-                  %input#syukyu.form-control( required value="60" )
+                  %input#kyukei.form-control( value="60" )
                   %div.input-group-addon 分
                 %div.notice.col-sm-offset-4 ※分単位で入力
               -# 出勤時刻
@@ -208,7 +207,7 @@
                 %div.notice ※残業を含む平均的な退勤時刻を入力
               -# 計算するボタン
               %div.form-group
-                %button#keisan-btn.btn.btn-primary.col-sm-offset-4( data-toggle="modal" data-target="#myModal" disabled="disabled" )
+                %button#keisanBtn.btn.btn-primary.col-sm-offset-4( data-toggle="modal" data-target="#myModal" )
                   %i.fa.fa-hand-o-up
                   計算する
     -# -------------- footer --------------
@@ -217,7 +216,24 @@
         %row
           %div.col-sm-12
             %p( style="text-align: center;" ) Copyright &copy; 2013-2016 サビ残くん All Rights Reserved.
+    -# -------------- Modal --------------
+    %div#myModal.modal.fade( tabindex="-1" role="dialog" aria-labelledby="myModalLabel" )
+      %div.modal-dialog( role="document" )
+        %div.modal-content
+          %div.modal-header
+            %button( type="button" class="close" data-dismiss="modal" aria-label="Close" )
+              %span( aria-hidden="true") &times;
+            %h4( class="modal-title" id="myModalLabel" ) Modal title
+          %div.modal-body ...
+          %div.modal-footer
+            %button( type="button" class="btn btn-default" data-dismiss="modal" ) Close
+            %button( type="button" class="btn btn-primary" ) Save changes
     -# ------------ JavaScript ------------
+    -# jQuery
     %script( type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js" )
+    -# Bootstrap
     %script( type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js" )
+    -# jquery.animate-colors
+    %script( type="text/javascript" src="./js/jquery.animate-colors-min.js" )
+    -# main
     %script( type="text/javascript" src="./js/main.js" )
