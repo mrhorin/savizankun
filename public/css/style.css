@@ -16,12 +16,23 @@ html, body {
   max-width: 870px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 0px;
+  padding-right: 0px;
   position: relative; }
 
 header {
   padding-top: 20px; }
 
+.content {
+  width: 90%;
+  background: rgba(255, 255, 255, 0.6) !important;
+  padding-top: 25px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px; }
+
 footer {
+  padding-top: 20px;
   padding-bottom: 20px; }
 
 ul#share {

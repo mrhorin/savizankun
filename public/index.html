@@ -14,8 +14,8 @@
     <link href='./css/style.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div class='container'>
-      <header>
+    <header>
+      <div class='container'>
         <row>
           <div class='col-sm-6'>
             <img class='img-responsive' src='./img/savizankun.png'>
@@ -62,24 +62,29 @@
                   <li>平均退勤時刻は、残業を含む平均的な退勤時刻を入力して下さい。</li>
                 </ol>
               </ul>
-              <a class='btn btn-default' href='' role='button' style='margin-left:70%'>その他FAQ</a>
+              <div id='faq' style='text-align: right;'>
+                <a class='btn btn-default' href='' role='button'>その他FAQ</a>
+              </div>
             </div>
           </div>
         </row>
-      </header>
-      <div class='main'>
+      </div>
+    </header>
+    <div id='main'>
+      <div class='container content'>
         <row>
-          <div class='col-sm-6'></div>
-          <div class='col-sm-6'></div>
+          <div class='col-sm-12'></div>
         </row>
       </div>
-      <footer>
+    </div>
+    <footer>
+      <div class='container'>
         <row>
           <div class='col-sm-12'>
             <p style='text-align: center;'>Copyright &copy; 2013-2016 サビ残くん All Rights Reserved.</p>
           </div>
         </row>
-      </footer>
-    </div>
+      </div>
+    </footer>
   </body>
 </html>
