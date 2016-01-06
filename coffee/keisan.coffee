@@ -33,12 +33,31 @@ class window.Keisan
     @rodoTime["overWeekHoutei"] = _getWeekOverHouteiRodoTime(@rodoTime["zitu"], @formValues["syukyu"])
     # 深夜労働時間
     @rodoTime["shinya"] = _getShinyaRodoTime(@formValues["startWork"], @formValues["kyukei"], @rodoTime["zitu"], @rodoTime["syotei"])
-    # console.log @rodoTime
 
   # 時給を取得
   getZikyu: ->
     _zikyu = @formValues["gekkyu"] / ((365 - @formValues["nenkyu"]) * @rodoTime["syotei"] / 12)
     return Math.round _zikyu
+
+  # 年間の残業代を取得
+  getZangyouYenYear: ->
+    _zikyu = @getZikyu()
+    _weekSyukkinDays = 7 - @formValues["syukyu"]
+    _yearSyukkinDays = 365 - @formValues["nenkyu"]
+
+    # 所定労働時間超過の残業代
+    _overSyotei = @rodoTime["overSyotei"] * _zikyu * _yearSyukkinDays
+    # 深夜労働時間の割増賃金
+    _shinyaWarimashi = @rodoTime["shinya"] * _zikyu * WARIMASHI * _yearSyukkinDays
+    # 法定労働時間の割増賃金
+    _overHouteiWarimashi = @rodoTime["overHoutei"] + @rodoTime["overWeekHoutei"] * WEEKS * _zikyu * WARIMASHI
+    # 合算
+    return Math.round _overSyotei+_shinyaWarimashi+_overHouteiWarimashi
+
+  # 年間の残業時間
+  getZangyouTimeYear: ->
+    _yearSyukkinDays = 365 - @formValues["nenkyu"]
+    return Math.round @rodoTime["overSyotei"] * _yearSyukkinDays
 
   # 深夜労働時間を取得
   _getShinyaRodoTime = (startWork, kyukei, zituRodoTime, syoteiRodoTime)->

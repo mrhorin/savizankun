@@ -37,6 +37,9 @@
       var formValues, keisan;
       formValues = _getFormValuesList();
       keisan = new window.Keisan(formValues);
+      console.log(keisan.getZikyu());
+      console.log(keisan.getZangyouYenYear());
+      console.log(keisan.getZangyouTimeYear());
       return this.modalBtn.click();
     };
 
@@ -133,6 +136,23 @@
       var _zikyu;
       _zikyu = this.formValues["gekkyu"] / ((365 - this.formValues["nenkyu"]) * this.rodoTime["syotei"] / 12);
       return Math.round(_zikyu);
+    };
+
+    Keisan.prototype.getZangyouYenYear = function() {
+      var _overHouteiWarimashi, _overSyotei, _shinyaWarimashi, _weekSyukkinDays, _yearSyukkinDays, _zikyu;
+      _zikyu = this.getZikyu();
+      _weekSyukkinDays = 7 - this.formValues["syukyu"];
+      _yearSyukkinDays = 365 - this.formValues["nenkyu"];
+      _overSyotei = this.rodoTime["overSyotei"] * _zikyu * _yearSyukkinDays;
+      _shinyaWarimashi = this.rodoTime["shinya"] * _zikyu * WARIMASHI * _yearSyukkinDays;
+      _overHouteiWarimashi = this.rodoTime["overHoutei"] + this.rodoTime["overWeekHoutei"] * WEEKS * _zikyu * WARIMASHI;
+      return Math.round(_overSyotei + _shinyaWarimashi + _overHouteiWarimashi);
+    };
+
+    Keisan.prototype.getZangyouTimeYear = function() {
+      var _yearSyukkinDays;
+      _yearSyukkinDays = 365 - this.formValues["nenkyu"];
+      return Math.round(this.rodoTime["overSyotei"] * _yearSyukkinDays);
     };
 
     _getShinyaRodoTime = function(startWork, kyukei, zituRodoTime, syoteiRodoTime) {

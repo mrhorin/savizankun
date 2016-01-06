@@ -37,6 +37,9 @@
       var formValues, keisan;
       formValues = _getFormValuesList();
       keisan = new window.Keisan(formValues);
+      console.log(keisan.getZikyu());
+      console.log(keisan.getZangyouYenYear());
+      console.log(keisan.getZangyouTimeYear());
       return this.modalBtn.click();
     };
 

@@ -46,6 +46,10 @@ class window.Form
   _validSuccess = ->
     formValues = _getFormValuesList()
     keisan = new window.Keisan(formValues)
+    console.log keisan.getZikyu()
+    console.log keisan.getZangyouYenYear()
+    console.log keisan.getZangyouTimeYear()
+
     # モーダルを表示
     @modalBtn.click()
 
