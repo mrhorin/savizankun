@@ -1,0 +1,67 @@
+# 計算フォーム関連クラス
+class window.Form
+
+  constructor: ->
+    _setSelector()
+    _setEventListener()
+
+  # セレクタをセット
+  _setSelector = ->
+    # 計算フォーム
+    @form   = document.getElementById("keisan")
+    # 月給
+    @gekkyu = document.getElementById("gekkyu")
+    # 年間休日
+    @nenkyu = document.getElementById("nenkyu")
+    # 週休
+    @syukyu = document.getElementById("syukyu")
+    # 休憩時間
+    @kyukei = document.getElementById("kyukei")
+    # 出勤時刻
+    @startWorkHour = document.getElementById("startWorkHour")
+    @startWorkMin = document.getElementById("startWorkMin")
+    # 定時退勤時刻
+    @endWorkHour = document.getElementById("endWorkHour")
+    @endWorkMin = document.getElementById("endWorkMin")
+    # 平均定時退勤時刻
+    @overEndWorkHour = document.getElementById("overEndWorkHour")
+    @overEndWorkMin = document.getElementById("overEndWorkMin")
+    # 計算するボタン
+    @keisanBtn = document.getElementById("keisanBtn")
+    # モーダル呼び出しボタン
+    @modalBtn = document.getElementById("modalBtn")
+
+
+  # イベントリスナーをセット
+  _setEventListener = ->
+    # 計算するボタンにイベントリスナーをセット
+    @keisanBtn.addEventListener "click", ->
+      # 計算フォームの値チェック
+      if @form.checkValidity()
+        _validSuccess()
+      else
+        _validFail()
+
+  # 値チェック成功時の処理
+  _validSuccess = ->
+    formValues = _getFormValuesList()
+    keisan = new window.Keisan(formValues)
+    # モーダルを表示
+    @modalBtn.click()
+
+  # 値チェック失敗時の処理
+  _validFail = ->
+
+  # フォーム入力値配列を取得
+  _getFormValuesList = ->
+    formValues =
+      "gekkyu": Number(@gekkyu.value)
+      "nenkyu": Number(@nenkyu.value)
+      "syukyu": Number(@syukyu.value)
+      "kyukei": Number(@kyukei.value)
+      "startWorkHour": Number(@startWorkHour.value)
+      "startWorkMin": Number(@startWorkMin.value)
+      "endWorkHour": Number(@endWorkHour.value)
+      "endWorkMin": Number(@endWorkMin.value)
+      "overEndWorkHour": Number(@overEndWorkHour.value)
+      "overEndWorkMin": Number(@overEndWorkMin.value)

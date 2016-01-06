@@ -1,8 +1,64 @@
 (function() {
-  window.KeisanForm = (function() {
-    function KeisanForm() {}
+  window.Form = (function() {
+    var _getFormValuesList, _setEventListener, _setSelector, _validFail, _validSuccess;
 
-    return KeisanForm;
+    function Form() {
+      _setSelector();
+      _setEventListener();
+    }
+
+    _setSelector = function() {
+      this.form = document.getElementById("keisan");
+      this.gekkyu = document.getElementById("gekkyu");
+      this.nenkyu = document.getElementById("nenkyu");
+      this.syukyu = document.getElementById("syukyu");
+      this.kyukei = document.getElementById("kyukei");
+      this.startWorkHour = document.getElementById("startWorkHour");
+      this.startWorkMin = document.getElementById("startWorkMin");
+      this.endWorkHour = document.getElementById("endWorkHour");
+      this.endWorkMin = document.getElementById("endWorkMin");
+      this.overEndWorkHour = document.getElementById("overEndWorkHour");
+      this.overEndWorkMin = document.getElementById("overEndWorkMin");
+      this.keisanBtn = document.getElementById("keisanBtn");
+      return this.modalBtn = document.getElementById("modalBtn");
+    };
+
+    _setEventListener = function() {
+      return this.keisanBtn.addEventListener("click", function() {
+        if (this.form.checkValidity()) {
+          return _validSuccess();
+        } else {
+          return _validFail();
+        }
+      });
+    };
+
+    _validSuccess = function() {
+      var formValues, keisan;
+      formValues = _getFormValuesList();
+      keisan = new window.Keisan(formValues);
+      return this.modalBtn.click();
+    };
+
+    _validFail = function() {};
+
+    _getFormValuesList = function() {
+      var formValues;
+      return formValues = {
+        "gekkyu": Number(this.gekkyu.value),
+        "nenkyu": Number(this.nenkyu.value),
+        "syukyu": Number(this.syukyu.value),
+        "kyukei": Number(this.kyukei.value),
+        "startWorkHour": Number(this.startWorkHour.value),
+        "startWorkMin": Number(this.startWorkMin.value),
+        "endWorkHour": Number(this.endWorkHour.value),
+        "endWorkMin": Number(this.endWorkMin.value),
+        "overEndWorkHour": Number(this.overEndWorkHour.value),
+        "overEndWorkMin": Number(this.overEndWorkMin.value)
+      };
+    };
+
+    return Form;
 
   })();
 
@@ -43,10 +99,56 @@
 }).call(this);
 
 (function() {
+  window.Keisan = (function() {
+    var END_SHINYA, HOUTEI_ROUDOU_ZIKAN, START_SHINYA, WARIMASHI, WEEKS, _getRodoTime, _timeParseFloat;
+
+    WEEKS = 4.4;
+
+    WARIMASHI = 0.25;
+
+    HOUTEI_ROUDOU_ZIKAN = 8;
+
+    START_SHINYA = 22;
+
+    END_SHINYA = 5;
+
+    function Keisan(formValuesList) {
+      this.formValues = formValuesList;
+      this.formValues["startWork"] = _timeParseFloat(this.formValues["startWorkHour"], this.formValues["startWorkMin"]);
+      this.formValues["endWork"] = _timeParseFloat(this.formValues["endWorkHour"], this.formValues["endWorkMin"]);
+      this.formValues["overEndWork"] = _timeParseFloat(this.formValues["overEndWorkHour"], this.formValues["overEndWorkMin"]);
+      this.rodoTime = {
+        "syotei": _getRodoTime(this.formValues["startWork"], this.formValues["endWork"], this.formValues["kyukei"]),
+        "zitu": _getRodoTime(this.formValues["startWork"], this.formValues["overEndWork"], this.formValues["kyukei"])
+      };
+      console.log(this.formValues);
+      console.log(this.rodoTime);
+    }
+
+    _timeParseFloat = function(hour, min) {
+      return min / 60 + hour;
+    };
+
+    _getRodoTime = function(startTime, endTime, kyukei) {
+      kyukei = kyukei / 60;
+      if (endTime - startTime > 0) {
+        return endTime - startTime - kyukei;
+      } else {
+        return 24 - startTime + endTime - kyukei;
+      }
+    };
+
+    return Keisan;
+
+  })();
+
+}).call(this);
+
+(function() {
   window.Main = (function() {
     function Main() {
       this.shareObj = new window.Share();
-      this.keisanFormObj = new window.KeisanForm();
+      this.FormObj = new window.Form();
     }
 
     return Main;

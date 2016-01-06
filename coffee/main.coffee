@@ -4,4 +4,4 @@ class window.Main
 
   constructor: ->
     @shareObj = new window.Share()
-    @keisanFormObj = new window.KeisanForm()
+    @FormObj = new window.Form()
