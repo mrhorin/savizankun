@@ -3,7 +3,7 @@ a {
   text-decoration: none; }
 
 html, body {
-  background-image: url("../img/bg.png");
+  background-image: url("../../img/bg.png");
   height: 100%;
   padding: 0;
   margin: 0;
@@ -40,6 +40,8 @@ ul#share {
   height: auto;
   margin: 0px;
   padding: 0px; }
+  ul#share a {
+    text-decoration: none; }
 
 ul#share > a > li {
   display: inline-block;
@@ -52,28 +54,28 @@ ul#share > a > li {
   vertical-align: middle;
   cursor: pointer; }
 
-ul#share > a > li.twitter {
+ul#share > a > li#twitter {
   background: #55acee;
   box-shadow: 0 2px #2795e9;
   padding: 2px 11px 1px 11px; }
 
-ul#share > a > li.twitter:hover {
+ul#share > a > li#twitter:hover {
   background: #83c3f3; }
 
-ul#share > a > li.fb {
+ul#share > a > li#fb {
   background: #3b5998;
   box-shadow: 0 2px #2d4373;
   padding: 2px 15px 1px 15px; }
 
-ul#share > a > li.fb:hover {
+ul#share > a > li#fb:hover {
   background: #4c70ba; }
 
-ul#share > a > li.hatena {
+ul#share > a > li#hatena {
   background: #2c6ebd;
   box-shadow: 0 2px #225694;
   padding: 2px 8px 1px 8px; }
 
-ul#share > a > li.hatena:hover {
+ul#share > a > li#hatena:hover {
   background: #4888d4; }
 
 .hatena-icon {
@@ -98,7 +100,7 @@ ul#share > a > li.hatena:hover {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  padding: 13px;
+  padding: 12px 7px 9px 7px;
   margin-top: 15px;
   margin-bottom: 15px;
   color: white;

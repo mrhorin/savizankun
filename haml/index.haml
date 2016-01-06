@@ -1,5 +1,5 @@
 !!!
-%html
+%html{:lang => "ja"}
   %head
     %title サビ残くん - サービス残業代計算サイト
     %meta( http-equiv="Content-Type" content="text/html" charset="utf-8" )
@@ -16,8 +16,14 @@
     -# Google Fonts
     %link( rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Candal' )
     -# style
-    %link( rel="stylesheet" type="text/css" href="./css/style.css" )
-  %body
+    %link( rel="stylesheet" type="text/css" href="./dest/css/style.css" )
+    -# 初期化処理
+    :javascript
+      var mainIniInitialize;
+      mainIniInitialize = function() {
+        return this.mainObj = new window.Main();
+      };
+  %body( onLoad="mainIniInitialize();" )
     -# --------------- header ---------------
     %header
       %div.container
@@ -28,16 +34,16 @@
             -# シェアボタン
             %ul#share
               -# Twitter
-              %a( href="http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！" onclick="shareTwitter();")
-                %li.twitter
+              %a( href="http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！")
+                %li#twitter
                   %i.fa.fa-twitter
               -# Facebook
-              %a( href="http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-" onclick="shareFacebook();" )
-                %li.fb
+              %a( href="http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-")
+                %li#fb
                   %i.fa.fa-facebook
               -# Hatena
-              %a( href="http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com" onclick="shareHatena();" )
-                %li.hatena
+              %a( href="http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com")
+                %li#hatena
                   %span.hatena-icon B!
             -# お知らせ
             %div#info
@@ -70,33 +76,33 @@
       %div.container.content
         %row
           %div.col-sm-6.col-sm-offset-3
-            -# 計算用フォーム
-            %div#keisan
+            -# --------------- 計算用フォーム ---------------
+            %form#keisan( onsubmit="return false;" )
               %img( src="./img/keisan.png" class="img-responsive" style="margin: auto; padding:0px 0px 20px 0px;" )
               -# 月給
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 月給
                 %div.input-group
-                  %input#gekkyu.form-control
+                  %input#gekkyu.form-control( value="250000" type="number" required autofocus min="1" )
                   %div.input-group-addon 円
                 %div.notice.col-sm-offset-4 ※支給額から各種手当を除いた額
               -# 年間休日
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 年間休日
                 %div.input-group
-                  %input#nenkyu.form-control( value="105" )
+                  %input#nenkyu.form-control( value="105" type="number" required min="0" max="364" )
                   %div.input-group-addon 日
               -# 週休
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 週休
                 %div.input-group
-                  %input#syukyu.form-control( value="2" )
+                  %input#syukyu.form-control( type="number" required value="2" min="0" max="6" )
                   %div.input-group-addon 日
               -# 休憩時間
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 休憩時間
                 %div.input-group
-                  %input#kyukei.form-control( value="60" )
+                  %input#kyukei.form-control( type="number" required value="60" min="0" max="1440" )
                   %div.input-group-addon 分
                 %div.notice.col-sm-offset-4 ※分単位で入力
               -# 出勤時刻
@@ -191,10 +197,10 @@
                   %option( value="15") 15
                   %option( value="16") 16
                   %option( value="17") 17
-                  %option( value="18" selected) 18
+                  %option( value="18") 18
                   %option( value="19") 19
                   %option( value="20") 20
-                  %option( value="21") 21
+                  %option( value="21" selected) 21
                   %option( value="22") 22
                   %option( value="23") 23
                 %span 時
@@ -207,9 +213,13 @@
                 %div.notice ※残業を含む平均的な退勤時刻を入力
               -# 計算するボタン
               %div.form-group
-                %button#keisanBtn.btn.btn-primary.col-sm-offset-4( data-toggle="modal" data-target="#myModal" )
+                %button#keisanBtn.btn.btn-primary.col-sm-offset-4( type="submit" )
                   %i.fa.fa-hand-o-up
                   計算する
+              -# %div.form-group
+              -#   %button#modalBtn.btn.btn-primary.col-sm-offset-4( data-toggle="modal" data-target="#myModal" disabled )
+              -#     Modal呼び出し
+
     -# -------------- footer --------------
     %footer
       %div.container
@@ -233,7 +243,5 @@
     %script( type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js" )
     -# Bootstrap
     %script( type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js" )
-    -# jquery.animate-colors
-    %script( type="text/javascript" src="./js/jquery.animate-colors-min.js" )
-    -# main
-    %script( type="text/javascript" src="./js/main.js" )
+    -# scripts
+    %script( type="text/javascript" src="./scripts.js" )

@@ -13,6 +13,14 @@ module.exports = (grunt)->
       haml_assets:
         files: ['haml/*.haml']
         tasks: 'haml:assets'
+      concat_js:
+        files: ['public/dest/js/*.js']
+        tasks: 'concat'
+    # 結合タスク
+    concat:
+      files:
+        src: 'public/dest/js/*.js'
+        dest: 'public/scripts.js'
     # コンパイル
     coffee:
       assets:
@@ -20,7 +28,7 @@ module.exports = (grunt)->
           expand: true,
           cwd: 'coffee'
           src: ['./*.coffee']
-          dest: 'public/js/'
+          dest: 'public/dest/js'
           ext: '.js'
         ]
     sass:
@@ -29,7 +37,7 @@ module.exports = (grunt)->
           expand: true
           cwd: 'scss/'
           src: ['./*.scss']
-          dest: 'public/css/'
+          dest: 'public/dest/css/'
           ext: '.css'
         ]
     haml:
@@ -44,6 +52,7 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-haml'
+    grunt.loadNpmTasks 'grunt-contrib-concat'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     # タスクを登録
     grunt.registerTask 'default', ['watch']

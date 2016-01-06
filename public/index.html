@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang='ja'>
   <head>
     <title>サビ残くん - サービス残業代計算サイト</title>
     <meta charset='utf-8' content='text/html' http-equiv='Content-Type'>
@@ -11,27 +11,33 @@
     <link href='../bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='../bower_components/font-awesome/css/font-awesome.min.css' media='all' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
-    <link href='./css/style.css' rel='stylesheet' type='text/css'>
+    <link href='./dest/css/style.css' rel='stylesheet' type='text/css'>
+    <script>
+      var mainIniInitialize;
+      mainIniInitialize = function() {
+        return this.mainObj = new window.Main();
+      };
+    </script>
   </head>
-  <body>
+  <body onLoad='mainIniInitialize();'>
     <header>
       <div class='container'>
         <row>
           <div class='col-sm-6'>
             <img class='img-responsive' src='./img/savizankun.png'>
             <ul id='share'>
-              <a href='http://twitter.com/share?url=http://savizankun.com&amp;text=サビ残くん -あなたの残業代計算します！' onclick='shareTwitter();'>
-                <li class='twitter'>
+              <a href='http://twitter.com/share?url=http://savizankun.com&amp;text=サビ残くん -あなたの残業代計算します！'>
+                <li id='twitter'>
                   <i class='fa fa-twitter'></i>
                 </li>
               </a>
-              <a href='http://www.facebook.com/sharer.php?u=http://savizankun.com&amp;t=サビ残くん -あなたの残業代計算します！-' onclick='shareFacebook();'>
-                <li class='fb'>
+              <a href='http://www.facebook.com/sharer.php?u=http://savizankun.com&amp;t=サビ残くん -あなたの残業代計算します！-'>
+                <li id='fb'>
                   <i class='fa fa-facebook'></i>
                 </li>
               </a>
-              <a href="http://b.hatena.ne.jp/add?mode=confirm&amp;title='サビ残くん -あなたの残業代計算します！-'&amp;url=http://savizankun.com" onclick='shareHatena();'>
-                <li class='hatena'>
+              <a href="http://b.hatena.ne.jp/add?mode=confirm&amp;title='サビ残くん -あなたの残業代計算します！-'&amp;url=http://savizankun.com">
+                <li id='hatena'>
                   <span class='hatena-icon'>B!</span>
                 </li>
               </a>
@@ -74,12 +80,12 @@
       <div class='container content'>
         <row>
           <div class='col-sm-6 col-sm-offset-3'>
-            <div id='keisan'>
+            <form id='keisan' onsubmit='return false;'>
               <img class='img-responsive' src='./img/keisan.png' style='margin: auto; padding:0px 0px 20px 0px;'>
               <div class='form-group'>
                 <label class='col-sm-4 control-label' style='text-align: right'>月給</label>
                 <div class='input-group'>
-                  <input class='form-control' id='gekkyu'>
+                  <input autofocus class='form-control' id='gekkyu' min='1' required type='number' value='250000'>
                   <div class='input-group-addon'>円</div>
                 </div>
                 <div class='notice col-sm-offset-4'>※支給額から各種手当を除いた額</div>
@@ -87,21 +93,21 @@
               <div class='form-group'>
                 <label class='col-sm-4 control-label' style='text-align: right'>年間休日</label>
                 <div class='input-group'>
-                  <input class='form-control' id='nenkyu' value='105'>
+                  <input class='form-control' id='nenkyu' max='364' min='0' required type='number' value='105'>
                   <div class='input-group-addon'>日</div>
                 </div>
               </div>
               <div class='form-group'>
                 <label class='col-sm-4 control-label' style='text-align: right'>週休</label>
                 <div class='input-group'>
-                  <input class='form-control' id='syukyu' value='2'>
+                  <input class='form-control' id='syukyu' max='6' min='0' required type='number' value='2'>
                   <div class='input-group-addon'>日</div>
                 </div>
               </div>
               <div class='form-group'>
                 <label class='col-sm-4 control-label' style='text-align: right'>休憩時間</label>
                 <div class='input-group'>
-                  <input class='form-control' id='kyukei' value='60'>
+                  <input class='form-control' id='kyukei' max='1440' min='0' required type='number' value='60'>
                   <div class='input-group-addon'>分</div>
                 </div>
                 <div class='notice col-sm-offset-4'>※分単位で入力</div>
@@ -201,10 +207,10 @@
                   <option value='15'>15</option>
                   <option value='16'>16</option>
                   <option value='17'>17</option>
-                  <option selected value='18'>18</option>
+                  <option value='18'>18</option>
                   <option value='19'>19</option>
                   <option value='20'>20</option>
-                  <option value='21'>21</option>
+                  <option selected value='21'>21</option>
                   <option value='22'>22</option>
                   <option value='23'>23</option>
                 </select>
@@ -219,12 +225,12 @@
                 <div class='notice'>※残業を含む平均的な退勤時刻を入力</div>
               </div>
               <div class='form-group'>
-                <button class='btn btn-primary col-sm-offset-4' data-target='#myModal' data-toggle='modal' id='keisanBtn'>
+                <button class='btn btn-primary col-sm-offset-4' id='keisanBtn' type='submit'>
                   <i class='fa fa-hand-o-up'></i>
                   計算する
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </row>
       </div>
@@ -257,7 +263,6 @@
     </div>
     <script src='../bower_components/jquery/dist/jquery.min.js' type='text/javascript'></script>
     <script src='../bower_components/bootstrap/dist/js/bootstrap.min.js' type='text/javascript'></script>
-    <script src='./js/jquery.animate-colors-min.js' type='text/javascript'></script>
-    <script src='./js/main.js' type='text/javascript'></script>
+    <script src='./scripts.js' type='text/javascript'></script>
   </body>
 </html>
