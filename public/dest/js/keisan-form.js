@@ -1,23 +1,30 @@
 (function() {
   window.KeisanForm = (function() {
+    var setEventListener, validFail, validSuccess;
+
     function KeisanForm() {
-      this.setEventListener();
+      setEventListener();
     }
 
-    KeisanForm.prototype.setEventListener = function() {
-      var form, gekkyu, keisanBtn, modalBtn;
-      form = document.getElementById("keisan");
-      gekkyu = document.getElementById("gekkyu");
-      keisanBtn = document.getElementById("keisanBtn");
-      modalBtn = document.getElementById("modalBtn");
-      return keisanBtn.addEventListener("click", function() {
-        if (form.checkValidity()) {
-          return console.log("OK！");
+    setEventListener = function() {
+      this.form = document.getElementById("keisan");
+      this.gekkyu = document.getElementById("gekkyu");
+      this.keisanBtn = document.getElementById("keisanBtn");
+      this.modalBtn = document.getElementById("modalBtn");
+      return this.keisanBtn.addEventListener("click", function() {
+        if (this.form.checkValidity()) {
+          return validSuccess();
         } else {
-          return console.log("NG...");
+          return validFail();
         }
       });
     };
+
+    validSuccess = function() {
+      return this.modalBtn.click();
+    };
+
+    validFail = function() {};
 
     return KeisanForm;
 

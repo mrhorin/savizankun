@@ -2,22 +2,31 @@
 class window.KeisanForm
 
   constructor: ->
-    @setEventListener()
+    setEventListener()
 
-  setEventListener: ->
+  # イベントリスナーをセット
+  setEventListener = ->
     # 計算フォーム
-    form   = document.getElementById("keisan")
+    @form   = document.getElementById("keisan")
     # 月給
-    gekkyu = document.getElementById("gekkyu")
+    @gekkyu = document.getElementById("gekkyu")
     # 計算するボタン
-    keisanBtn = document.getElementById("keisanBtn")
-    # モダル呼び出しボタン
-    modalBtn = document.getElementById("modalBtn")
+    @keisanBtn = document.getElementById("keisanBtn")
+    # モーダル呼び出しボタン
+    @modalBtn = document.getElementById("modalBtn")
 
     # 計算するボタンにイベントリスナーをセット
-    keisanBtn.addEventListener "click", ->
+    @keisanBtn.addEventListener "click", ->
       # 計算フォームの値チェック
-      if form.checkValidity()
-        console.log "OK！"
+      if @form.checkValidity()
+        validSuccess()
       else
-        console.log "NG..."
+        validFail()
+
+  # 値チェック成功時の処理
+  validSuccess = ->
+    # モーダルを表示
+    @modalBtn.click()
+
+  # 値チェック失敗時の処理
+  validFail = ->
