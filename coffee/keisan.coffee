@@ -55,10 +55,15 @@ class window.Keisan
     # 合算
     return Math.round _overSyotei+_shinyaWarimashi+_overHouteiWarimashi
 
-  # 年間の残業時間
+  # 年間の残業時間を取得
   getZangyouTimeYear: ->
     _yearSyukkinDays = 365 - @formValues["nenkyu"]
     return Math.round @rodoTime["overSyotei"] * _yearSyukkinDays
+
+  # ツイート用URLを取得
+  getTweetUrl: ->
+    _text = "【サビ残くん】あなたの年間のサービス残業代は" + @getZangyouYenYear().toLocaleString() + "円、時間に換算すると" + @getZangyouTimeYear() + "時間です！"
+    return _url = "https://twitter.com/intent/tweet?text=" + _text + "&url=http%3A%2F%2Fsavizankun.com"
 
   # 深夜労働時間を取得
   _getShinyaRodoTime = (startWork, kyukei, zituRodoTime, syoteiRodoTime)->

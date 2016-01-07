@@ -23,7 +23,8 @@
       this.modalBtn = document.getElementById("modalBtn");
       this.zangyouYenYear = document.getElementById("zangyou-yen-year");
       this.zangyouTimeYear = document.getElementById("zangyou-time-year");
-      return this.zikyu = document.getElementById("zikyu");
+      this.zikyu = document.getElementById("zikyu");
+      return this.btnTweetLink = document.getElementById("btn-tweet-link");
     };
 
     _setEventListener = function() {
@@ -43,6 +44,7 @@
       this.zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円";
       this.zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間";
       this.zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時";
+      this.btnTweetLink.setAttribute("href", keisan.getTweetUrl());
       return this.modalBtn.click();
     };
 
@@ -156,6 +158,12 @@
       var _yearSyukkinDays;
       _yearSyukkinDays = 365 - this.formValues["nenkyu"];
       return Math.round(this.rodoTime["overSyotei"] * _yearSyukkinDays);
+    };
+
+    Keisan.prototype.getTweetUrl = function() {
+      var _text, _url;
+      _text = "【サビ残くん】あなたの年間のサービス残業代は" + this.getZangyouYenYear().toLocaleString() + "円、時間に換算すると" + this.getZangyouTimeYear() + "時間です！";
+      return _url = "https://twitter.com/intent/tweet?text=" + _text + "&url=http%3A%2F%2Fsavizankun.com";
     };
 
     _getShinyaRodoTime = function(startWork, kyukei, zituRodoTime, syoteiRodoTime) {

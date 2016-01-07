@@ -37,6 +37,8 @@ class window.Form
     @zangyouTimeYear = document.getElementById("zangyou-time-year")
     # 時給
     @zikyu = document.getElementById("zikyu")
+    # 結果をツイートボタン
+    @btnTweetLink = document.getElementById("btn-tweet-link")
 
 
   # イベントリスナーをセット
@@ -57,6 +59,7 @@ class window.Form
     @zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円"
     @zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間"
     @zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時"
+    @btnTweetLink.setAttribute "href", keisan.getTweetUrl()
     # モーダルを表示
     @modalBtn.click()
 

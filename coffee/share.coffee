@@ -12,7 +12,6 @@ class window.Share
     @twitter = document.getElementById("twitter")
     @fb = document.getElementById("fb")
     @hatena = document.getElementById("hatena")
-    # @hatena.children[1].innerText = 777
 
   # シェアボタンにイベントを設定
   _setEventListener = ->

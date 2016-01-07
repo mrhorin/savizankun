@@ -52,6 +52,12 @@
       return Math.round(this.rodoTime["overSyotei"] * _yearSyukkinDays);
     };
 
+    Keisan.prototype.getTweetUrl = function() {
+      var _text, _url;
+      _text = "【サビ残くん】あなたの年間のサービス残業代は" + this.getZangyouYenYear().toLocaleString() + "円、時間に換算すると" + this.getZangyouTimeYear() + "時間です！";
+      return _url = "https://twitter.com/intent/tweet?text=" + _text + "&url=http%3A%2F%2Fsavizankun.com";
+    };
+
     _getShinyaRodoTime = function(startWork, kyukei, zituRodoTime, syoteiRodoTime) {
       var _endShinyaCount, _i, _kyukei, _shinyaRodoTime, _startShinyaCount;
       _kyukei = kyukei / 60;

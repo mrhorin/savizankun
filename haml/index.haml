@@ -255,9 +255,10 @@
                 %td#zikyu
           %div.modal-footer
             -# 結果をツイートボタン
-            %button.btn.btn-primary.btn-kekka.btn-tweet( type="button" )
-              %i.fa.fa-twitter
-              結果をツイート
+            %a#btn-tweet-link( href="" )
+              %button.btn.btn-primary.btn-kekka.btn-tweet( type="button" )
+                %i.fa.fa-twitter
+                結果をツイート
             -# 閉じるボタン
             %button.btn.btn-default.btn-kekka( type="button" data-dismiss="modal" ) 閉じる
 

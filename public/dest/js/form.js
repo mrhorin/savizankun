@@ -23,7 +23,8 @@
       this.modalBtn = document.getElementById("modalBtn");
       this.zangyouYenYear = document.getElementById("zangyou-yen-year");
       this.zangyouTimeYear = document.getElementById("zangyou-time-year");
-      return this.zikyu = document.getElementById("zikyu");
+      this.zikyu = document.getElementById("zikyu");
+      return this.btnTweetLink = document.getElementById("btn-tweet-link");
     };
 
     _setEventListener = function() {
@@ -43,6 +44,7 @@
       this.zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円";
       this.zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間";
       this.zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時";
+      this.btnTweetLink.setAttribute("href", keisan.getTweetUrl());
       return this.modalBtn.click();
     };
 
