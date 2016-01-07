@@ -31,24 +31,24 @@
         %row
           %div.col-sm-6
             -# タイトル画像
-            %img.img-responsive{ src: "./img/savizankun.png" }
+            %img.img-responsive( src="./img/savizankun.png" )
             -# シェアボタン
             %ul#share
               -# Twitter
               %a( href="http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！")
                 %li#twitter
                   %i.fa.fa-twitter
-                  %span.share-count 257
+                  %span.share-count 255
               -# Facebook
               %a( href="http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-")
                 %li#fb
                   %i.fa.fa-facebook
-                  %span.share-count 257
+                  %span.share-count 255
               -# Hatena
               %a( href="http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com")
                 %li#hatena
                   %span.hatena-icon B!
-                  %span.share-count 257
+                  %span.share-count 255
             -# お知らせ
             %div#info
               %div.info-title
@@ -74,7 +74,7 @@
                   %li 平均退勤時刻は、残業を含む平均的な退勤時刻を入力して下さい。
               -# その他FAQ
               %div#faq( style="text-align: right;" )
-                %a.btn.btn-default( href="" role="button" ) その他FAQ
+                %a.btn.btn-default( href="./faq.html" role="button" ) その他FAQ
     -# --------------- main ---------------
     %div#main
       %div.container.content

@@ -169,7 +169,7 @@ h4#myModalLabel{
   background-color: $twitter;
   border: 1px solid darken($twitter, 7%);
   i{
-    font-size: 25px;
+    font-size: 20px;
     vertical-align: middle;
   }
 }
@@ -213,4 +213,49 @@ table#kekka {
     }
     #kekka th{ text-align: center; }
     #kekka tr:first-child th   { border-top: 1px solid #ddd; }
+}
+
+// ------------------- FAQ ---------------------
+#faq > ul{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#faq > ul > li{
+	list-style-type: none;
+	border-bottom: 1px solid #ccc;
+	margin-top: 30px;
+}
+#faq > ul > li:last-child{
+  border-bottom: none;
+}
+#faq > ul > li > h4{
+	font-weight: bold;
+	line-height: 1.5em;
+}
+#faq > ul > li > p{
+	margin-left: 20px;
+	margin-bottom: 30px;
+	line-height: 2em;
+}
+.q{
+	font-weight: normal;
+	color: white;
+	background-color: #52433e;
+	border: solid 1px #52433e;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding: 0px 10px;
+	margin-right: 6px;
+}
+.a{
+	color: #52433e;
+	background-color: white;
+	border: solid 1px #52433e;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding: 0px 10px;
+	margin-right: 6px;
+	font-weight: bold;
 }

@@ -152,7 +152,7 @@ h4#myModalLabel {
   background-color: #00aced;
   border: 1px solid #0092c9; }
   .btn-tweet i {
-    font-size: 25px;
+    font-size: 20px;
     vertical-align: middle; }
 
 .btn-tweet:hover {
@@ -205,5 +205,47 @@ table#kekka {
 
   #kekka tr:first-child th {
     border-top: 1px solid #ddd; } }
+#faq > ul {
+  padding-left: 10px;
+  padding-right: 10px; }
+
+#faq > ul > li {
+  list-style-type: none;
+  border-bottom: 1px solid #ccc;
+  margin-top: 30px; }
+
+#faq > ul > li:last-child {
+  border-bottom: none; }
+
+#faq > ul > li > h4 {
+  font-weight: bold;
+  line-height: 1.5em; }
+
+#faq > ul > li > p {
+  margin-left: 20px;
+  margin-bottom: 30px;
+  line-height: 2em; }
+
+.q {
+  font-weight: normal;
+  color: white;
+  background-color: #52433e;
+  border: solid 1px #52433e;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 0px 10px;
+  margin-right: 6px; }
+
+.a {
+  color: #52433e;
+  background-color: white;
+  border: solid 1px #52433e;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 0px 10px;
+  margin-right: 6px;
+  font-weight: bold; }
 
 /*# sourceMappingURL=style.css.map */
