@@ -14,3 +14,10 @@ Grunt,npm,bowerについては各自で調べて下さい。
 ```
 grunt watch
 ```
+## bower_componentsをpublic/lib/配下へ
+grunt-bower-taskを使用。
+下記コマンドでbower_componentsをpublic/lib/配下へインストール。
+詳細はGruntfileとbower.json参照。  
+```
+grunt bower:install
+```
