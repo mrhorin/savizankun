@@ -20,7 +20,10 @@
       this.overEndWorkHour = document.getElementById("overEndWorkHour");
       this.overEndWorkMin = document.getElementById("overEndWorkMin");
       this.keisanBtn = document.getElementById("keisanBtn");
-      return this.modalBtn = document.getElementById("modalBtn");
+      this.modalBtn = document.getElementById("modalBtn");
+      this.zangyouYenYear = document.getElementById("zangyou-yen-year");
+      this.zangyouTimeYear = document.getElementById("zangyou-time-year");
+      return this.zikyu = document.getElementById("zikyu");
     };
 
     _setEventListener = function() {
@@ -37,9 +40,9 @@
       var formValues, keisan;
       formValues = _getFormValuesList();
       keisan = new window.Keisan(formValues);
-      console.log(keisan.getZikyu());
-      console.log(keisan.getZangyouYenYear());
-      console.log(keisan.getZangyouTimeYear());
+      this.zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円";
+      this.zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間";
+      this.zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時";
       return this.modalBtn.click();
     };
 

@@ -15,6 +15,7 @@
     %link( rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.min.css" media="all" )
     -# Google Fonts
     %link( rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Candal' )
+    %link( rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Squada+One' )
     -# style
     %link( rel="stylesheet" type="text/css" href="./dest/css/style.css" )
     -# 初期化処理
@@ -37,14 +38,17 @@
               %a( href="http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！")
                 %li#twitter
                   %i.fa.fa-twitter
+                  %span.share-count 257
               -# Facebook
               %a( href="http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-")
                 %li#fb
                   %i.fa.fa-facebook
+                  %span.share-count 257
               -# Hatena
               %a( href="http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com")
                 %li#hatena
                   %span.hatena-icon B!
+                  %span.share-count 257
             -# お知らせ
             %div#info
               %div.info-title
@@ -108,117 +112,121 @@
               -# 出勤時刻
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 出勤時刻
-                %select#startWorkHour
-                  %option( value="0") 0
-                  %option( value="1") 1
-                  %option( value="2") 2
-                  %option( value="3") 3
-                  %option( value="4") 4
-                  %option( value="5") 5
-                  %option( value="6") 6
-                  %option( value="7") 7
-                  %option( value="8") 8
-                  %option( value="9" selected ) 9
-                  %option( value="10") 10
-                  %option( value="11") 11
-                  %option( value="12") 12
-                  %option( value="13") 13
-                  %option( value="14") 14
-                  %option( value="15") 15
-                  %option( value="16") 16
-                  %option( value="17") 17
-                  %option( value="18") 18
-                  %option( value="19") 19
-                  %option( value="20") 20
-                  %option( value="21") 21
-                  %option( value="22") 22
-                  %option( value="23") 23
-                %span 時
-                %select#startWorkMin
-                  %option( value="0" )0
-                  %option( value="15" )15
-                  %option( value="30" )30
-                  %option( value="45" )45
-                %span 分
+                %div.input-group( style="margin: auto;" )
+                  %select#startWorkHour
+                    %option( value="0") 0
+                    %option( value="1") 1
+                    %option( value="2") 2
+                    %option( value="3") 3
+                    %option( value="4") 4
+                    %option( value="5") 5
+                    %option( value="6") 6
+                    %option( value="7") 7
+                    %option( value="8") 8
+                    %option( value="9" selected ) 9
+                    %option( value="10") 10
+                    %option( value="11") 11
+                    %option( value="12") 12
+                    %option( value="13") 13
+                    %option( value="14") 14
+                    %option( value="15") 15
+                    %option( value="16") 16
+                    %option( value="17") 17
+                    %option( value="18") 18
+                    %option( value="19") 19
+                    %option( value="20") 20
+                    %option( value="21") 21
+                    %option( value="22") 22
+                    %option( value="23") 23
+                  %span 時
+                  %select#startWorkMin
+                    %option( value="0" )0
+                    %option( value="15" )15
+                    %option( value="30" )30
+                    %option( value="45" )45
+                  %span 分
               -# 定時退勤時刻
               %div.form-group
-                %label.col-sm-4.control-label( style="text-align: right" ) 定時退勤時刻
-                %select#endWorkHour
-                  %option( value="0") 0
-                  %option( value="1") 1
-                  %option( value="2") 2
-                  %option( value="3") 3
-                  %option( value="4") 4
-                  %option( value="5") 5
-                  %option( value="6") 6
-                  %option( value="7") 7
-                  %option( value="8") 8
-                  %option( value="9" ) 9
-                  %option( value="10") 10
-                  %option( value="11") 11
-                  %option( value="12") 12
-                  %option( value="13") 13
-                  %option( value="14") 14
-                  %option( value="15") 15
-                  %option( value="16") 16
-                  %option( value="17") 17
-                  %option( value="18" selected) 18
-                  %option( value="19") 19
-                  %option( value="20") 20
-                  %option( value="21") 21
-                  %option( value="22") 22
-                  %option( value="23") 23
-                %span 時
-                %select#endWorkMin
-                  %option( value="0" )0
-                  %option( value="15" )15
-                  %option( value="30" )30
-                  %option( value="45" )45
-                %span 分
+                %label.col-sm-4.control-label( style="text-align: right" ) 定時退勤
+                %div.input-group( style="margin: auto;" )
+                  %select#endWorkHour
+                    %option( value="0") 0
+                    %option( value="1") 1
+                    %option( value="2") 2
+                    %option( value="3") 3
+                    %option( value="4") 4
+                    %option( value="5") 5
+                    %option( value="6") 6
+                    %option( value="7") 7
+                    %option( value="8") 8
+                    %option( value="9" ) 9
+                    %option( value="10") 10
+                    %option( value="11") 11
+                    %option( value="12") 12
+                    %option( value="13") 13
+                    %option( value="14") 14
+                    %option( value="15") 15
+                    %option( value="16") 16
+                    %option( value="17") 17
+                    %option( value="18" selected) 18
+                    %option( value="19") 19
+                    %option( value="20") 20
+                    %option( value="21") 21
+                    %option( value="22") 22
+                    %option( value="23") 23
+                  %span 時
+                  %select#endWorkMin
+                    %option( value="0" )0
+                    %option( value="15" )15
+                    %option( value="30" )30
+                    %option( value="45" )45
+                  %span 分
               -# 平均退勤時刻
               %div.form-group
-                %label.col-sm-4.control-label( style="text-align: right" ) 平均退勤時刻
-                %select#overEndWorkHour
-                  %option( value="0") 0
-                  %option( value="1") 1
-                  %option( value="2") 2
-                  %option( value="3") 3
-                  %option( value="4") 4
-                  %option( value="5") 5
-                  %option( value="6") 6
-                  %option( value="7") 7
-                  %option( value="8") 8
-                  %option( value="9" ) 9
-                  %option( value="10") 10
-                  %option( value="11") 11
-                  %option( value="12") 12
-                  %option( value="13") 13
-                  %option( value="14") 14
-                  %option( value="15") 15
-                  %option( value="16") 16
-                  %option( value="17") 17
-                  %option( value="18") 18
-                  %option( value="19") 19
-                  %option( value="20") 20
-                  %option( value="21" selected) 21
-                  %option( value="22") 22
-                  %option( value="23") 23
-                %span 時
-                %select#overEndWorkMin
-                  %option( value="0" )0
-                  %option( value="15" )15
-                  %option( value="30" )30
-                  %option( value="45" )45
-                %span 分
+                %label.col-sm-4.control-label( style="text-align: right" ) 平均退勤
+                %div.input-group( style="margin: auto;" )
+                  %select#overEndWorkHour
+                    %option( value="0") 0
+                    %option( value="1") 1
+                    %option( value="2") 2
+                    %option( value="3") 3
+                    %option( value="4") 4
+                    %option( value="5") 5
+                    %option( value="6") 6
+                    %option( value="7") 7
+                    %option( value="8") 8
+                    %option( value="9" ) 9
+                    %option( value="10") 10
+                    %option( value="11") 11
+                    %option( value="12") 12
+                    %option( value="13") 13
+                    %option( value="14") 14
+                    %option( value="15") 15
+                    %option( value="16") 16
+                    %option( value="17") 17
+                    %option( value="18") 18
+                    %option( value="19") 19
+                    %option( value="20") 20
+                    %option( value="21" selected) 21
+                    %option( value="22") 22
+                    %option( value="23") 23
+                  %span 時
+                  %select#overEndWorkMin
+                    %option( value="0" )0
+                    %option( value="15" )15
+                    %option( value="30" )30
+                    %option( value="45" )45
+                  %span 分
                 %div.notice ※残業を含む平均的な退勤時刻を入力
               -# 計算するボタン
               %div.form-group
                 %button#keisanBtn.btn.btn-primary.col-sm-offset-4( type="submit" )
                   %i.fa.fa-hand-o-up
                   計算する
+              -# Modal呼び出しボタン
               %div.form-group
                 %button#modalBtn.btn.btn-primary.col-sm-offset-4( data-toggle="modal" data-target="#myModal" style="display: none;" )
-                  Modal呼び出し
+                  Modal
 
     -# -------------- footer --------------
     %footer
@@ -233,11 +241,26 @@
           %div.modal-header
             %button( type="button" class="close" data-dismiss="modal" aria-label="Close" )
               %span( aria-hidden="true") &times;
-            %h4( class="modal-title" id="myModalLabel" ) Modal title
-          %div.modal-body ...
+            %h4#myModalLabel.modal-title 計算結果
+          %div.modal-body
+            %table#kekka
+              %tr
+                %th 年間のサービス残業代
+                %td#zangyou-yen-year
+              %tr
+                %th 年間の残業時間
+                %td#zangyou-time-year
+              %tr
+                %th 時給換算
+                %td#zikyu
           %div.modal-footer
-            %button( type="button" class="btn btn-default" data-dismiss="modal" ) Close
-            %button( type="button" class="btn btn-primary" ) Save changes
+            -# 結果をツイートボタン
+            %button.btn.btn-primary.btn-kekka.btn-tweet( type="button" )
+              %i.fa.fa-twitter
+              結果をツイート
+            -# 閉じるボタン
+            %button.btn.btn-default.btn-kekka( type="button" data-dismiss="modal" ) 閉じる
+
     -# ------------ JavaScript ------------
     -# jQuery
     %script( type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js" )

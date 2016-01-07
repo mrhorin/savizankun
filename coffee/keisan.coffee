@@ -1,4 +1,5 @@
 # 計算処理をするクラス
+
 class window.Keisan
   # 一ヶ月の週の数
   WEEKS = 4.4

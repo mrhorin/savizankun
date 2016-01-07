@@ -11,6 +11,7 @@
     <link href='../bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
     <link href='../bower_components/font-awesome/css/font-awesome.min.css' media='all' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Squada+One' rel='stylesheet' type='text/css'>
     <link href='./dest/css/style.css' rel='stylesheet' type='text/css'>
     <script>
       var mainIniInitialize;
@@ -29,16 +30,19 @@
               <a href='http://twitter.com/share?url=http://savizankun.com&amp;text=サビ残くん -あなたの残業代計算します！'>
                 <li id='twitter'>
                   <i class='fa fa-twitter'></i>
+                  <span class='share-count'>257</span>
                 </li>
               </a>
               <a href='http://www.facebook.com/sharer.php?u=http://savizankun.com&amp;t=サビ残くん -あなたの残業代計算します！-'>
                 <li id='fb'>
                   <i class='fa fa-facebook'></i>
+                  <span class='share-count'>257</span>
                 </li>
               </a>
               <a href="http://b.hatena.ne.jp/add?mode=confirm&amp;title='サビ残くん -あなたの残業代計算します！-'&amp;url=http://savizankun.com">
                 <li id='hatena'>
                   <span class='hatena-icon'>B!</span>
+                  <span class='share-count'>257</span>
                 </li>
               </a>
             </ul>
@@ -114,114 +118,120 @@
               </div>
               <div class='form-group'>
                 <label class='col-sm-4 control-label' style='text-align: right'>出勤時刻</label>
-                <select id='startWorkHour'>
-                  <option value='0'>0</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option selected value='9'>9</option>
-                  <option value='10'>10</option>
-                  <option value='11'>11</option>
-                  <option value='12'>12</option>
-                  <option value='13'>13</option>
-                  <option value='14'>14</option>
-                  <option value='15'>15</option>
-                  <option value='16'>16</option>
-                  <option value='17'>17</option>
-                  <option value='18'>18</option>
-                  <option value='19'>19</option>
-                  <option value='20'>20</option>
-                  <option value='21'>21</option>
-                  <option value='22'>22</option>
-                  <option value='23'>23</option>
-                </select>
-                <span>時</span>
-                <select id='startWorkMin'>
-                  <option value='0'>0</option>
-                  <option value='15'>15</option>
-                  <option value='30'>30</option>
-                  <option value='45'>45</option>
-                </select>
-                <span>分</span>
+                <div class='input-group' style='margin: auto;'>
+                  <select id='startWorkHour'>
+                    <option value='0'>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option selected value='9'>9</option>
+                    <option value='10'>10</option>
+                    <option value='11'>11</option>
+                    <option value='12'>12</option>
+                    <option value='13'>13</option>
+                    <option value='14'>14</option>
+                    <option value='15'>15</option>
+                    <option value='16'>16</option>
+                    <option value='17'>17</option>
+                    <option value='18'>18</option>
+                    <option value='19'>19</option>
+                    <option value='20'>20</option>
+                    <option value='21'>21</option>
+                    <option value='22'>22</option>
+                    <option value='23'>23</option>
+                  </select>
+                  <span>時</span>
+                  <select id='startWorkMin'>
+                    <option value='0'>0</option>
+                    <option value='15'>15</option>
+                    <option value='30'>30</option>
+                    <option value='45'>45</option>
+                  </select>
+                  <span>分</span>
+                </div>
               </div>
               <div class='form-group'>
-                <label class='col-sm-4 control-label' style='text-align: right'>定時退勤時刻</label>
-                <select id='endWorkHour'>
-                  <option value='0'>0</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
-                  <option value='11'>11</option>
-                  <option value='12'>12</option>
-                  <option value='13'>13</option>
-                  <option value='14'>14</option>
-                  <option value='15'>15</option>
-                  <option value='16'>16</option>
-                  <option value='17'>17</option>
-                  <option selected value='18'>18</option>
-                  <option value='19'>19</option>
-                  <option value='20'>20</option>
-                  <option value='21'>21</option>
-                  <option value='22'>22</option>
-                  <option value='23'>23</option>
-                </select>
-                <span>時</span>
-                <select id='endWorkMin'>
-                  <option value='0'>0</option>
-                  <option value='15'>15</option>
-                  <option value='30'>30</option>
-                  <option value='45'>45</option>
-                </select>
-                <span>分</span>
+                <label class='col-sm-4 control-label' style='text-align: right'>定時退勤</label>
+                <div class='input-group' style='margin: auto;'>
+                  <select id='endWorkHour'>
+                    <option value='0'>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                    <option value='10'>10</option>
+                    <option value='11'>11</option>
+                    <option value='12'>12</option>
+                    <option value='13'>13</option>
+                    <option value='14'>14</option>
+                    <option value='15'>15</option>
+                    <option value='16'>16</option>
+                    <option value='17'>17</option>
+                    <option selected value='18'>18</option>
+                    <option value='19'>19</option>
+                    <option value='20'>20</option>
+                    <option value='21'>21</option>
+                    <option value='22'>22</option>
+                    <option value='23'>23</option>
+                  </select>
+                  <span>時</span>
+                  <select id='endWorkMin'>
+                    <option value='0'>0</option>
+                    <option value='15'>15</option>
+                    <option value='30'>30</option>
+                    <option value='45'>45</option>
+                  </select>
+                  <span>分</span>
+                </div>
               </div>
               <div class='form-group'>
-                <label class='col-sm-4 control-label' style='text-align: right'>平均退勤時刻</label>
-                <select id='overEndWorkHour'>
-                  <option value='0'>0</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
-                  <option value='11'>11</option>
-                  <option value='12'>12</option>
-                  <option value='13'>13</option>
-                  <option value='14'>14</option>
-                  <option value='15'>15</option>
-                  <option value='16'>16</option>
-                  <option value='17'>17</option>
-                  <option value='18'>18</option>
-                  <option value='19'>19</option>
-                  <option value='20'>20</option>
-                  <option selected value='21'>21</option>
-                  <option value='22'>22</option>
-                  <option value='23'>23</option>
-                </select>
-                <span>時</span>
-                <select id='overEndWorkMin'>
-                  <option value='0'>0</option>
-                  <option value='15'>15</option>
-                  <option value='30'>30</option>
-                  <option value='45'>45</option>
-                </select>
-                <span>分</span>
+                <label class='col-sm-4 control-label' style='text-align: right'>平均退勤</label>
+                <div class='input-group' style='margin: auto;'>
+                  <select id='overEndWorkHour'>
+                    <option value='0'>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                    <option value='10'>10</option>
+                    <option value='11'>11</option>
+                    <option value='12'>12</option>
+                    <option value='13'>13</option>
+                    <option value='14'>14</option>
+                    <option value='15'>15</option>
+                    <option value='16'>16</option>
+                    <option value='17'>17</option>
+                    <option value='18'>18</option>
+                    <option value='19'>19</option>
+                    <option value='20'>20</option>
+                    <option selected value='21'>21</option>
+                    <option value='22'>22</option>
+                    <option value='23'>23</option>
+                  </select>
+                  <span>時</span>
+                  <select id='overEndWorkMin'>
+                    <option value='0'>0</option>
+                    <option value='15'>15</option>
+                    <option value='30'>30</option>
+                    <option value='45'>45</option>
+                  </select>
+                  <span>分</span>
+                </div>
                 <div class='notice'>※残業を含む平均的な退勤時刻を入力</div>
               </div>
               <div class='form-group'>
@@ -232,7 +242,7 @@
               </div>
               <div class='form-group'>
                 <button class='btn btn-primary col-sm-offset-4' data-target='#myModal' data-toggle='modal' id='modalBtn' style='display: none;'>
-                  Modal呼び出し
+                  Modal
                 </button>
               </div>
             </form>
@@ -256,12 +266,30 @@
             <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
               <span aria-hidden='true'>&times;</span>
             </button>
-            <h4 class='modal-title' id='myModalLabel'>Modal title</h4>
+            <h4 class='modal-title' id='myModalLabel'>計算結果</h4>
           </div>
-          <div class='modal-body'>...</div>
+          <div class='modal-body'>
+            <table id='kekka'>
+              <tr>
+                <th>年間のサービス残業代</th>
+                <td id='zangyou-yen-year'></td>
+              </tr>
+              <tr>
+                <th>年間の残業時間</th>
+                <td id='zangyou-time-year'></td>
+              </tr>
+              <tr>
+                <th>時給換算</th>
+                <td id='zikyu'></td>
+              </tr>
+            </table>
+          </div>
           <div class='modal-footer'>
-            <button class='btn btn-default' data-dismiss='modal' type='button'>Close</button>
-            <button class='btn btn-primary' type='button'>Save changes</button>
+            <button class='btn btn-primary btn-kekka btn-tweet' type='button'>
+              <i class='fa fa-twitter'></i>
+              結果をツイート
+            </button>
+            <button class='btn btn-default btn-kekka' data-dismiss='modal' type='button'>閉じる</button>
           </div>
         </div>
       </div>

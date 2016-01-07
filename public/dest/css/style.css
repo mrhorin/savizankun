@@ -52,10 +52,22 @@ ul#share > a > li {
   border-radius: 3px;
   list-style: none;
   vertical-align: middle;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative; }
+  ul#share > a > li .share-count {
+    font-family: 'Squada One', cursive;
+    position: absolute;
+    bottom: -10px;
+    right: -5px;
+    border-radius: 35px;
+    color: #fff;
+    font-size: 0.55em;
+    font-weight: bold;
+    background-color: #ff0066;
+    padding: 0px 7px; }
 
 ul#share > a > li#twitter {
-  background: #55acee;
+  background: #00aced;
   box-shadow: 0 2px #2795e9;
   padding: 2px 11px 1px 11px; }
 
@@ -63,7 +75,7 @@ ul#share > a > li#twitter:hover {
   background: #83c3f3; }
 
 ul#share > a > li#fb {
-  background: #3b5998;
+  background: #305097;
   box-shadow: 0 2px #2d4373;
   padding: 2px 15px 1px 15px; }
 
@@ -71,7 +83,7 @@ ul#share > a > li#fb:hover {
   background: #4c70ba; }
 
 ul#share > a > li#hatena {
-  background: #2c6ebd;
+  background: #008fde;
   box-shadow: 0 2px #225694;
   padding: 2px 8px 1px 8px; }
 
@@ -126,5 +138,72 @@ ul#share > a > li#hatena:hover {
 
 input {
   text-align: right; }
+
+h4#myModalLabel {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center; }
+
+.btn-kekka {
+  padding: 5px 12px !important;
+  font-size: 15px; }
+
+.btn-tweet {
+  background-color: #00aced;
+  border: 1px solid #0092c9; }
+  .btn-tweet i {
+    font-size: 25px;
+    vertical-align: middle; }
+
+.btn-tweet:hover {
+  background-color: #0087ba; }
+
+section table {
+  width: 100%; }
+
+section th, section td {
+  padding: 10px;
+  border: 1px solid #ddd; }
+
+section th {
+  background: #f4f4f4; }
+
+table#kekka {
+  width: 100%;
+  max-width: 485px;
+  margin: auto; }
+
+#kekka tr {
+  border: 1px solid #ccc;
+  color: #333; }
+
+#kekka th {
+  padding: 5px 10px;
+  width: 45%;
+  text-align: right;
+  background-color: #ffefd5; }
+
+#kekka td {
+  padding: 5px 10px;
+  font-size: 2em;
+  font-weight: bold;
+  color: #ff0066;
+  text-align: right; }
+
+@media only screen and (max-width: 480px) {
+  #kekka {
+    margin: 0 -10px; }
+
+  #kekka th,
+  #kekka td {
+    width: 100%;
+    display: block;
+    border-top: none; }
+
+  #kekka th {
+    text-align: center; }
+
+  #kekka tr:first-child th {
+    border-top: 1px solid #ddd; } }
 
 /*# sourceMappingURL=style.css.map */

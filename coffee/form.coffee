@@ -1,4 +1,5 @@
 # 計算フォーム関連クラス
+
 class window.Form
 
   constructor: ->
@@ -30,6 +31,12 @@ class window.Form
     @keisanBtn = document.getElementById("keisanBtn")
     # モーダル呼び出しボタン
     @modalBtn = document.getElementById("modalBtn")
+    # 年間の残業代
+    @zangyouYenYear = document.getElementById("zangyou-yen-year")
+    # 年間の残業時間
+    @zangyouTimeYear = document.getElementById("zangyou-time-year")
+    # 時給
+    @zikyu = document.getElementById("zikyu")
 
 
   # イベントリスナーをセット
@@ -46,17 +53,17 @@ class window.Form
   _validSuccess = ->
     formValues = _getFormValuesList()
     keisan = new window.Keisan(formValues)
-    console.log keisan.getZikyu()
-    console.log keisan.getZangyouYenYear()
-    console.log keisan.getZangyouTimeYear()
-
+    # 結果をモーダルに表示
+    @zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円"
+    @zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間"
+    @zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時"
     # モーダルを表示
     @modalBtn.click()
 
   # 値チェック失敗時の処理
   _validFail = ->
 
-  # フォーム入力値配列を取得
+  # フォーム入力値を連想配列で取得
   _getFormValuesList = ->
     formValues =
       "gekkyu": Number(@gekkyu.value)
