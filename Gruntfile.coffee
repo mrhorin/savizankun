@@ -49,6 +49,18 @@ module.exports = (grunt)->
           dest: 'public/'
           ext: '.html'
         ]
+    # Bower
+    bower:
+      install:
+        options:
+          targetDir: 'public/lib/'
+          layout: 'byComponent'
+          install: true
+          verbose: false
+          cleanTargetDir: true
+          cleanBowerDir: false
+
+    grunt.loadNpmTasks 'grunt-bower-task'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-haml'

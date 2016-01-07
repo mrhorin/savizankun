@@ -17,5 +17,18 @@
     "font-awesome": "~4.3.0",
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.6"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "**/bootstrap.min.js",
+      "css": "**/bootstrap.min.css"
+    },
+    "jquery": {
+      "js": "**/jquery.min.js"
+    },
+    "font-awesome": {
+      "css": "css/font-awesome.min.css",
+      "fonts": "fonts/**"
+    }
   }
 }
