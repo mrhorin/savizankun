@@ -1,6 +1,8 @@
 (function() {
   window.Share = (function() {
-    var _setEventListener, _setSelector, _setShareCounter, _shareCountTwitter, _shareFacebook, _shareHatena, _shareTwitter;
+    var URL, _setEventListener, _setFbCounter, _setHatenaCounter, _setSelector, _setShareCounter, _shareFacebook, _shareHatena, _shareTwitter;
+
+    URL = 'http://savizankun.com';
 
     function Share() {
       _setSelector();
@@ -27,30 +29,13 @@
     };
 
     _setShareCounter = function() {
-      return _shareCountTwitter();
+      _setFbCounter();
+      return _setHatenaCounter();
     };
 
     _shareTwitter = function() {
       window.open(this.href, 'Twitter', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
       return false;
-    };
-
-    _shareCountTwitter = function() {
-      return $.ajax({
-        url: 'http://urls.api.twitter.com/1/urls/count.json',
-        dataType: 'jsonp',
-        type: 'GET',
-        data: {
-          url: 'http://savizankun.com'
-        },
-        success: function(res) {
-          console.log(res.count);
-          return this.twitter.children[1].innerText = res.count;
-        },
-        error: function() {
-          return console.log("NGGGGGGG");
-        }
-      });
     };
 
     _shareFacebook = function() {
@@ -61,6 +46,38 @@
     _shareHatena = function() {
       window.open(this.href, 'Hatena', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
       return false;
+    };
+
+    _setFbCounter = function() {
+      return $.ajax({
+        url: 'http://graph.facebook.com/?id=' + encodeURIComponent(URL),
+        dataType: 'jsonp',
+        type: 'GET',
+        success: (function(_this) {
+          return function(res) {
+            return _this.fb.children[1].innerText = res.shares;
+          };
+        })(this),
+        error: function(error) {
+          return console.log(error);
+        }
+      });
+    };
+
+    _setHatenaCounter = function() {
+      return $.ajax({
+        url: 'http://api.b.st-hatena.com/entry.count?url=' + encodeURIComponent(URL),
+        dataType: 'jsonp',
+        type: 'GET',
+        success: (function(_this) {
+          return function(count) {
+            return _this.hatena.children[1].innerText = count;
+          };
+        })(this),
+        error: function(error) {
+          return console.log(error);
+        }
+      });
     };
 
     return Share;

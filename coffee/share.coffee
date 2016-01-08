@@ -1,6 +1,7 @@
 # シェアボタン関連クラス
 
 class window.Share
+  URL = 'http://savizankun.com'
 
   constructor: ->
     _setSelector()
@@ -26,28 +27,13 @@ class window.Share
 
   # シェアボタンのカウンターをセット
   _setShareCounter = ->
-    _shareCountTwitter()
+    _setFbCounter()
+    _setHatenaCounter()
 
   # Twitterボタンクリック
   _shareTwitter = ->
     window.open(this.href, 'Twitter', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes')
     return false
-
-  _shareCountTwitter = ->
-    $.ajax {
-      url:'http://urls.api.twitter.com/1/urls/count.json',
-      dataType: 'jsonp',
-      type: 'GET',
-      data: {
-        url: 'http://savizankun.com'
-      }
-      success: (res) ->
-        console.log(res.count)
-        @twitter.children[1].innerText = res.count
-      ,
-      error: () ->
-        console.log("NGGGGGGG");
-    }
 
   # FBボタンクリック
   _shareFacebook = ->
@@ -58,3 +44,29 @@ class window.Share
   _shareHatena = ->
     window.open(this.href, 'Hatena', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes')
     return false
+
+  # FBのシェアボタンのカウンターをセット
+  _setFbCounter = ->
+    $.ajax {
+      url: 'http://graph.facebook.com/?id=' + encodeURIComponent(URL),
+      dataType: 'jsonp',
+      type: 'GET',
+      success: (res) =>
+        @fb.children[1].innerText = res.shares
+      ,
+      error: (error) ->
+        console.log error
+    }
+
+  # はてなのシェアボタンのカウンターをセット
+  _setHatenaCounter = ->
+    $.ajax {
+      url: 'http://api.b.st-hatena.com/entry.count?url=' + encodeURIComponent(URL),
+      dataType: 'jsonp',
+      type: 'GET',
+      success: (count) =>
+        @hatena.children[1].innerText = count
+      ,
+      error: (error) ->
+        console.log error
+    }
