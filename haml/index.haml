@@ -217,13 +217,12 @@
                     %option( value="45" )45
                   %span 分
                 %div.notice ※残業を含む平均的な退勤時刻を入力
-              -# 計算するボタン
-              %div.form-group
-                %button#keisanBtn.btn.btn-primary.col-sm-offset-4( type="submit" )
+              %div.form-group( style="text-align: center;" )
+                -# 計算するボタン
+                %button#keisanBtn.btn.btn-primary.col-sm-offset-4( type="submit" style="margin-top: 5px; margin-bottom: -15px;" )
                   %i.fa.fa-hand-o-up
                   計算する
-              -# Modal呼び出しボタン
-              %div.form-group
+                -# Modal呼び出しボタン
                 %button#modalBtn.btn.btn-primary.col-sm-offset-4( data-toggle="modal" data-target="#myModal" style="display: none;" )
                   Modal
 

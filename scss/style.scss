@@ -76,7 +76,7 @@ ul#share>a>li{
 ul#share>a>li#twitter{
 	background: $twitter;
 	box-shadow: 0 2px #2795e9;
-  padding: 2px 11px 1px 11px;
+  padding: 3px 11px 0px 11px;
 }
 ul#share>a>li#twitter:hover{
 	background:#83c3f3;
@@ -85,7 +85,7 @@ ul#share>a>li#twitter:hover{
 ul#share>a>li#fb{
 	background:#305097;
 	box-shadow:0 2px #2d4373;
-  padding: 2px 15px 1px 15px;
+  padding: 3px 15px 0px 15px;
 }
 ul#share>a>li#fb:hover{
 	background:#4c70ba;
@@ -94,7 +94,7 @@ ul#share>a>li#fb:hover{
 ul#share>a>li#hatena{
 	background: #008fde;
 	box-shadow:0 2px #225694;
-  padding: 2px 8px 1px 8px;
+  padding: 3px 8px 0px 8px;
 }
 ul#share>a>li#hatena:hover{
 	background:#4888d4;
