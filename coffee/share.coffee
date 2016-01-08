@@ -5,6 +5,7 @@ class window.Share
   constructor: ->
     _setSelector()
     _setEventListener()
+    _setShareCounter()
 
   # セレクタをセット
   _setSelector = ->
@@ -23,6 +24,10 @@ class window.Share
     @hatena.addEventListener "click", ->
       _shareHatena()
 
+  # シェアボタンのカウンターをセット
+  _setShareCounter = ->
+    _shareCountTwitter()
+
   # Twitterボタンクリック
   _shareTwitter = ->
     window.open(this.href, 'Twitter', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes')
@@ -37,7 +42,8 @@ class window.Share
         url: 'http://savizankun.com'
       }
       success: (res) ->
-        console.log(res.count);
+        console.log(res.count)
+        @twitter.children[1].innerText = res.count
       ,
       error: () ->
         console.log("NGGGGGGG");

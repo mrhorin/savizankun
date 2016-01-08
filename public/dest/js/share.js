@@ -1,10 +1,11 @@
 (function() {
   window.Share = (function() {
-    var _setEventListener, _setSelector, _shareCountTwitter, _shareFacebook, _shareHatena, _shareTwitter;
+    var _setEventListener, _setSelector, _setShareCounter, _shareCountTwitter, _shareFacebook, _shareHatena, _shareTwitter;
 
     function Share() {
       _setSelector();
       _setEventListener();
+      _setShareCounter();
     }
 
     _setSelector = function() {
@@ -25,6 +26,10 @@
       });
     };
 
+    _setShareCounter = function() {
+      return _shareCountTwitter();
+    };
+
     _shareTwitter = function() {
       window.open(this.href, 'Twitter', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
       return false;
@@ -39,7 +44,8 @@
           url: 'http://savizankun.com'
         },
         success: function(res) {
-          return console.log(res.count);
+          console.log(res.count);
+          return this.twitter.children[1].innerText = res.count;
         },
         error: function() {
           return console.log("NGGGGGGG");
