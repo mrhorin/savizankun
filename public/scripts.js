@@ -270,17 +270,23 @@
     };
 
     _shareTwitter = function() {
-      window.open(this.href, 'Twitter', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
+      var _url;
+      _url = "http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！";
+      window.open(_url, 'Twitter', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
       return false;
     };
 
     _shareFacebook = function() {
-      window.open(this.href, 'Faceboo', 'width=550, height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');
+      var _url;
+      _url = "http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-";
+      window.open(_url, 'Facebook', 'width=550, height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');
       return false;
     };
 
     _shareHatena = function() {
-      window.open(this.href, 'Hatena', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
+      var _url;
+      _url = "http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com";
+      window.open(_url, 'Hatena', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
       return false;
     };
 
