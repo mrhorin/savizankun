@@ -34,23 +34,35 @@
     };
 
     _shareTwitter = function() {
-      var _url;
+      var _url, h_size, l_position, t_position, w_size;
       _url = "http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！";
-      window.open(_url, 'Twitter', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
+      w_size = 650;
+      h_size = 450;
+      l_position = Number((window.screen.width - w_size) / 2);
+      t_position = Number((window.screen.height - h_size) / 2);
+      window.open(_url, 'Twitter', "width=" + w_size + ", height=" + h_size + ", left=" + l_position + ", top=" + t_position + ", menubar=no, toolbar=no, scrollbars=yes");
       return false;
     };
 
     _shareFacebook = function() {
-      var _url;
+      var _url, h_size, l_position, t_position, w_size;
       _url = "http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-";
-      window.open(_url, 'Facebook', 'width=550, height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');
+      w_size = 550;
+      h_size = 450;
+      l_position = Number((window.screen.width - w_size) / 2);
+      t_position = Number((window.screen.height - h_size) / 2);
+      window.open(_url, 'Facebook', "width=" + w_size + ", height=" + h_size + ", left=" + l_position + ", top=" + t_position + ", menubar=no, toolbar=no, scrollbars=yes");
       return false;
     };
 
     _shareHatena = function() {
-      var _url;
+      var _url, h_size, l_position, t_position, w_size;
       _url = "http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com";
-      window.open(_url, 'Hatena', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes');
+      w_size = 650;
+      h_size = 450;
+      l_position = Number((window.screen.width - w_size) / 2);
+      t_position = Number((window.screen.height - h_size) / 2);
+      window.open(_url, 'Hatena', "width=" + w_size + ", height=" + h_size + ", left=" + l_position + ", top=" + t_position + ", menubar=no, toolbar=no, scrollbars=yes");
       return false;
     };
 
