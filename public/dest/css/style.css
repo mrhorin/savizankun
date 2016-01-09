@@ -69,7 +69,7 @@ ul#share > a > li {
 ul#share > a > li#twitter {
   background: #00aced;
   box-shadow: 0 2px #2795e9;
-  padding: 3px 11px 0px 11px; }
+  padding: 3px 10px 0px 10px; }
 
 ul#share > a > li#twitter:hover {
   background: #83c3f3; }
@@ -77,7 +77,7 @@ ul#share > a > li#twitter:hover {
 ul#share > a > li#fb {
   background: #305097;
   box-shadow: 0 2px #2d4373;
-  padding: 3px 15px 0px 15px; }
+  padding: 3px 14px 0px 14px; }
 
 ul#share > a > li#fb:hover {
   background: #4c70ba; }
@@ -85,7 +85,7 @@ ul#share > a > li#fb:hover {
 ul#share > a > li#hatena {
   background: #008fde;
   box-shadow: 0 2px #225694;
-  padding: 3px 8px 0px 8px; }
+  padding: 3px 6px 0px 7px; }
 
 ul#share > a > li#hatena:hover {
   background: #4888d4; }
@@ -93,7 +93,7 @@ ul#share > a > li#hatena:hover {
 .hatena-icon {
   font-family: 'Candal', sans-serif;
   vertical-align: bottom;
-  font-size: 24px; }
+  font-size: 25px; }
 
 #info {
   color: #111;
