@@ -1,6 +1,6 @@
 (function() {
   window.Form = (function() {
-    var _getFormValuesList, _setEventListener, _setSelector, _validFail, _validSuccess;
+    var _getFormValuesList, _kekkaTweet, _setEventListener, _setSelector, _validFail, _validSuccess;
 
     function Form() {
       _setSelector();
@@ -44,7 +44,9 @@
       this.zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円";
       this.zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間";
       this.zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時";
-      this.btnTweetLink.setAttribute("href", keisan.getTweetUrl());
+      this.btnTweetLink.addEventListener("click", function() {
+        return _kekkaTweet(keisan.getTweetUrl());
+      });
       return this.modalBtn.click();
     };
 
@@ -64,6 +66,17 @@
         "overEndWorkHour": Number(this.overEndWorkHour.value),
         "overEndWorkMin": Number(this.overEndWorkMin.value)
       };
+    };
+
+    _kekkaTweet = function(url) {
+      var _url, h_size, l_position, t_position, w_size;
+      _url = url;
+      w_size = 650;
+      h_size = 450;
+      l_position = Number((window.screen.width - w_size) / 2);
+      t_position = Number((window.screen.height - h_size) / 2);
+      window.open(_url, null, "width=" + w_size + ", height=" + h_size + ", left=" + l_position + ", top=" + t_position + ", menubar=no, toolbar=no, scrollbars=yes");
+      return false;
     };
 
     return Form;

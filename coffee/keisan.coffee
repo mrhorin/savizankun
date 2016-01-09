@@ -20,7 +20,7 @@ class window.Keisan
     @formValues["startWork"] = _timeParseFloat(@formValues["startWorkHour"], @formValues["startWorkMin"])
     @formValues["endWork"] = _timeParseFloat(@formValues["endWorkHour"], @formValues["endWorkMin"])
     @formValues["overEndWork"] = _timeParseFloat(@formValues["overEndWorkHour"], @formValues["overEndWorkMin"])
-
+    # 労働時間
     @rodoTime =
       # 所定労働時間
       "syotei": _getBetweenTime(@formValues["startWork"], @formValues["endWork"], @formValues["kyukei"])

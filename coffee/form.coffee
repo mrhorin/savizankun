@@ -59,7 +59,9 @@ class window.Form
     @zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円"
     @zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間"
     @zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時"
-    @btnTweetLink.setAttribute "href", keisan.getTweetUrl()
+    # 結果をツイートボタンにクリックイベントを追加
+    @btnTweetLink.addEventListener "click", ->
+      _kekkaTweet keisan.getTweetUrl()
     # モーダルを表示
     @modalBtn.click()
 
@@ -79,3 +81,13 @@ class window.Form
       "endWorkMin": Number(@endWorkMin.value)
       "overEndWorkHour": Number(@overEndWorkHour.value)
       "overEndWorkMin": Number(@overEndWorkMin.value)
+
+  # 結果をツイート
+  _kekkaTweet = (url)->
+    _url = url
+    w_size = 650
+    h_size = 450
+    l_position = Number (window.screen.width-w_size)/2
+    t_position = Number (window.screen.height-h_size)/2
+    window.open(_url, null, "width=#{w_size}, height=#{h_size}, left=#{l_position}, top=#{t_position}, menubar=no, toolbar=no, scrollbars=yes")
+    return false
