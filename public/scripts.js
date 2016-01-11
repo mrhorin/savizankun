@@ -1,6 +1,6 @@
 (function() {
   window.Form = (function() {
-    var _getFormValuesList, _kekkaTweet, _setEventListener, _setSelector, _validFail, _validSuccess;
+    var _getFormValuesList, _kekkaTweet, _setEventListener, _setSelector, _showKaroushi, _validFail, _validSuccess;
 
     function Form() {
       _setSelector();
@@ -24,7 +24,8 @@
       this.zangyouYenYear = document.getElementById("zangyou-yen-year");
       this.zangyouTimeYear = document.getElementById("zangyou-time-year");
       this.zikyu = document.getElementById("zikyu");
-      return this.btnTweetLink = document.getElementById("btn-tweet-link");
+      this.btnTweetLink = document.getElementById("btn-tweet-link");
+      return this.karoushi = document.getElementById("karoushi");
     };
 
     _setEventListener = function() {
@@ -47,6 +48,7 @@
       this.btnTweetLink.addEventListener("click", function() {
         return _kekkaTweet(keisan.getTweetUrl());
       });
+      _showKaroushi(keisan.validKaroushi());
       return this.modalBtn.click();
     };
 
@@ -77,6 +79,14 @@
       t_position = Number((window.screen.height - h_size) / 2);
       window.open(_url, null, "width=" + w_size + ", height=" + h_size + ", left=" + l_position + ", top=" + t_position + ", menubar=no, toolbar=no, scrollbars=yes");
       return false;
+    };
+
+    _showKaroushi = function(flug) {
+      if (flug) {
+        return this.karoushi.style.display = "block";
+      } else {
+        return this.karoushi.style.display = "none";
+      }
     };
 
     return Form;
@@ -121,7 +131,7 @@
 
 (function() {
   window.Keisan = (function() {
-    var END_SHINYA, HOUTEI_ROUDOU_ZIKAN, START_SHINYA, WARIMASHI, WEEKS, WEEK_HOUTEI_ROUDOU_ZIKAN, _getBetweenTime, _getOverHouteiRodoTime, _getShinyaRodoTime, _getWeekOverHouteiRodoTime, _timeParseFloat;
+    var END_SHINYA, HOUTEI_ROUDOU_ZIKAN, KAROUSHI, START_SHINYA, WARIMASHI, WEEKS, WEEK_HOUTEI_ROUDOU_ZIKAN, _getBetweenTime, _getOverHouteiRodoTime, _getShinyaRodoTime, _getWeekOverHouteiRodoTime, _timeParseFloat;
 
     WEEKS = 4.4;
 
@@ -134,6 +144,8 @@
     START_SHINYA = 22;
 
     END_SHINYA = 5;
+
+    KAROUSHI = 80;
 
     function Keisan(formValuesList) {
       this.formValues = formValuesList;
@@ -177,6 +189,14 @@
       var _text, _url;
       _text = "【サビ残くん】あなたの年間のサービス残業代は" + this.getZangyouYenYear().toLocaleString() + "円、時間に換算すると" + this.getZangyouTimeYear() + "時間です！";
       return _url = "https://twitter.com/intent/tweet?text=" + _text + "&url=http%3A%2F%2Fsavizankun.com";
+    };
+
+    Keisan.prototype.validKaroushi = function() {
+      if (this.rodoTime["overHoutei"] * 30 >= KAROUSHI) {
+        return true;
+      } else {
+        return false;
+      }
     };
 
     _getShinyaRodoTime = function(startWork, kyukei, zituRodoTime, syoteiRodoTime) {
@@ -238,7 +258,7 @@
   window.Main = (function() {
     function Main() {
       this.shareObj = new window.Share();
-      this.FormObj = new window.Form();
+      this.formObj = new window.Form();
     }
 
     return Main;

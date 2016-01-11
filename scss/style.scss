@@ -215,6 +215,24 @@ table#kekka {
     #kekka tr:first-child th   { border-top: 1px solid #ddd; }
 }
 
+#karoushi {
+ -webkit-animation: karoushiflash 0.5s infinite alternate;
+ -moz-animation: karoushiflash 0.5s infinite alternate;
+ animation: karoushiflash 0.5s infinite alternate;
+}
+@-webkit-keyframes karoushiflash {
+ from { background: rgb(0,0,0); }
+ to { background: rgb(150,0,0); }
+}
+@-moz-keyframes karoushiflash {
+  from { background: rgb(0,0,0); }
+  to { background: rgb(150,0,0); }
+}
+@keyframes karoushiflash {
+  from { background: rgb(0,0,0); }
+  to { background: rgb(150,0,0); }
+}
+
 // ------------------- FAQ ---------------------
 #faq > ul{
 	padding-left: 10px;

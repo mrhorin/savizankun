@@ -39,6 +39,8 @@ class window.Form
     @zikyu = document.getElementById("zikyu")
     # 結果をツイートボタン
     @btnTweetLink = document.getElementById("btn-tweet-link")
+    # 過労死認定基準値超過
+    @karoushi = document.getElementById("karoushi")
 
 
   # イベントリスナーをセット
@@ -62,6 +64,8 @@ class window.Form
     # 結果をツイートボタンにクリックイベントを追加
     @btnTweetLink.addEventListener "click", ->
       _kekkaTweet keisan.getTweetUrl()
+    # 過労死認定基準値超過画像
+    _showKaroushi keisan.validKaroushi()
     # モーダルを表示
     @modalBtn.click()
 
@@ -91,3 +95,10 @@ class window.Form
     t_position = Number (window.screen.height-h_size)/2
     window.open(_url, null, "width=#{w_size}, height=#{h_size}, left=#{l_position}, top=#{t_position}, menubar=no, toolbar=no, scrollbars=yes")
     return false
+
+  # 過労死基準超過の表示
+  _showKaroushi = (flug)->
+    if flug
+      @karoushi.style.display = "block"
+    else
+      @karoushi.style.display = "none"

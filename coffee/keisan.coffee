@@ -12,6 +12,8 @@ class window.Keisan
   # 割増賃金が発生する深夜時間帯
   START_SHINYA = 22
   END_SHINYA = 5
+  # 過労死認定基準
+  KAROUSHI = 80
 
   # 引数：フォーム入力値の連想配列
   constructor: (formValuesList)->
@@ -43,6 +45,7 @@ class window.Keisan
   # 年間の残業代を取得
   getZangyouYenYear: ->
     _zikyu = @getZikyu()
+    # 出勤日数
     _weekSyukkinDays = 7 - @formValues["syukyu"]
     _yearSyukkinDays = 365 - @formValues["nenkyu"]
 
@@ -64,6 +67,13 @@ class window.Keisan
   getTweetUrl: ->
     _text = "【サビ残くん】あなたの年間のサービス残業代は" + @getZangyouYenYear().toLocaleString() + "円、時間に換算すると" + @getZangyouTimeYear() + "時間です！"
     return _url = "https://twitter.com/intent/tweet?text=" + _text + "&url=http%3A%2F%2Fsavizankun.com"
+
+  # 1ヶ月の過労死認定基準を超過しているか
+  validKaroushi: ->
+    if @rodoTime["overHoutei"]*30 >= KAROUSHI
+      return true
+    else
+      return false
 
   # 深夜労働時間を取得
   _getShinyaRodoTime = (startWork, kyukei, zituRodoTime, syoteiRodoTime)->

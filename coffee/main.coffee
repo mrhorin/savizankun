@@ -4,4 +4,4 @@ class window.Main
 
   constructor: ->
     @shareObj = new window.Share()
-    @FormObj = new window.Form()
+    @formObj = new window.Form()

@@ -90,7 +90,7 @@
           %div.col-sm-6.col-sm-offset-3
             -# --------------- 計算用フォーム ---------------
             %form#keisan( onsubmit="return false;" )
-              %img( src="./img/keisan.png" class="img-responsive" style="margin: auto; padding:0px 0px 20px 0px;" )
+              %img.img-responsive( src="./img/keisan.png" style="margin: auto; padding:0px 0px 20px 0px;" )
               -# 月給
               %div.form-group
                 %label.col-sm-4.control-label( style="text-align: right" ) 月給
@@ -250,6 +250,7 @@
               %span( aria-hidden="true") &times;
             %h4#myModalLabel.modal-title 計算結果
           %div.modal-body
+            -# 結果テーブル
             %table#kekka
               %tr
                 %th 年間のサービス残業代
@@ -260,6 +261,8 @@
               %tr
                 %th 時給換算
                 %td#zikyu
+            -# 過労死基準超過
+            %img#karoushi.img-responsive( src="./img/karoushi.png" style="display: none;" )
           %div.modal-footer
             -# 結果をツイートボタン
             %a#btn-tweet-link( href="" style="text-decoration: none;" )

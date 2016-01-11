@@ -1,6 +1,6 @@
 (function() {
   window.Form = (function() {
-    var _getFormValuesList, _kekkaTweet, _setEventListener, _setSelector, _validFail, _validSuccess;
+    var _getFormValuesList, _kekkaTweet, _setEventListener, _setSelector, _showKaroushi, _validFail, _validSuccess;
 
     function Form() {
       _setSelector();
@@ -24,7 +24,8 @@
       this.zangyouYenYear = document.getElementById("zangyou-yen-year");
       this.zangyouTimeYear = document.getElementById("zangyou-time-year");
       this.zikyu = document.getElementById("zikyu");
-      return this.btnTweetLink = document.getElementById("btn-tweet-link");
+      this.btnTweetLink = document.getElementById("btn-tweet-link");
+      return this.karoushi = document.getElementById("karoushi");
     };
 
     _setEventListener = function() {
@@ -47,6 +48,7 @@
       this.btnTweetLink.addEventListener("click", function() {
         return _kekkaTweet(keisan.getTweetUrl());
       });
+      _showKaroushi(keisan.validKaroushi());
       return this.modalBtn.click();
     };
 
@@ -77,6 +79,14 @@
       t_position = Number((window.screen.height - h_size) / 2);
       window.open(_url, null, "width=" + w_size + ", height=" + h_size + ", left=" + l_position + ", top=" + t_position + ", menubar=no, toolbar=no, scrollbars=yes");
       return false;
+    };
+
+    _showKaroushi = function(flug) {
+      if (flug) {
+        return this.karoushi.style.display = "block";
+      } else {
+        return this.karoushi.style.display = "none";
+      }
     };
 
     return Form;

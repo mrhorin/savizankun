@@ -205,6 +205,26 @@ table#kekka {
 
   #kekka tr:first-child th {
     border-top: 1px solid #ddd; } }
+#karoushi {
+  -webkit-animation: karoushiflash 0.5s infinite alternate;
+  -moz-animation: karoushiflash 0.5s infinite alternate;
+  animation: karoushiflash 0.5s infinite alternate; }
+
+@-webkit-keyframes karoushiflash {
+  from {
+    background: black; }
+  to {
+    background: #960000; } }
+@-moz-keyframes karoushiflash {
+  from {
+    background: black; }
+  to {
+    background: #960000; } }
+@keyframes karoushiflash {
+  from {
+    background: black; }
+  to {
+    background: #960000; } }
 #faq > ul {
   padding-left: 10px;
   padding-right: 10px; }

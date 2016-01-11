@@ -1,6 +1,6 @@
 (function() {
   window.Keisan = (function() {
-    var END_SHINYA, HOUTEI_ROUDOU_ZIKAN, START_SHINYA, WARIMASHI, WEEKS, WEEK_HOUTEI_ROUDOU_ZIKAN, _getBetweenTime, _getOverHouteiRodoTime, _getShinyaRodoTime, _getWeekOverHouteiRodoTime, _timeParseFloat;
+    var END_SHINYA, HOUTEI_ROUDOU_ZIKAN, KAROUSHI, START_SHINYA, WARIMASHI, WEEKS, WEEK_HOUTEI_ROUDOU_ZIKAN, _getBetweenTime, _getOverHouteiRodoTime, _getShinyaRodoTime, _getWeekOverHouteiRodoTime, _timeParseFloat;
 
     WEEKS = 4.4;
 
@@ -13,6 +13,8 @@
     START_SHINYA = 22;
 
     END_SHINYA = 5;
+
+    KAROUSHI = 80;
 
     function Keisan(formValuesList) {
       this.formValues = formValuesList;
@@ -56,6 +58,14 @@
       var _text, _url;
       _text = "【サビ残くん】あなたの年間のサービス残業代は" + this.getZangyouYenYear().toLocaleString() + "円、時間に換算すると" + this.getZangyouTimeYear() + "時間です！";
       return _url = "https://twitter.com/intent/tweet?text=" + _text + "&url=http%3A%2F%2Fsavizankun.com";
+    };
+
+    Keisan.prototype.validKaroushi = function() {
+      if (this.rodoTime["overHoutei"] * 30 >= KAROUSHI) {
+        return true;
+      } else {
+        return false;
+      }
     };
 
     _getShinyaRodoTime = function(startWork, kyukei, zituRodoTime, syoteiRodoTime) {

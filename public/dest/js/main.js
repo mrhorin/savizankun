@@ -2,7 +2,7 @@
   window.Main = (function() {
     function Main() {
       this.shareObj = new window.Share();
-      this.FormObj = new window.Form();
+      this.formObj = new window.Form();
     }
 
     return Main;
