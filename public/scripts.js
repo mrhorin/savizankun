@@ -39,16 +39,17 @@
     };
 
     _validSuccess = function() {
-      var formValues, keisan;
-      formValues = _getFormValuesList();
-      keisan = new window.Keisan(formValues);
-      this.zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円";
-      this.zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間";
-      this.zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時";
+      var _formValues, _keisan, _zangyouZikyu;
+      _formValues = _getFormValuesList();
+      _keisan = new window.Keisan(_formValues);
+      this.zangyouYenYear.innerText = _keisan.getZangyouYenYear().toLocaleString() + "円";
+      this.zangyouTimeYear.innerText = _keisan.getZangyouTimeYear().toLocaleString() + "時間";
+      _zangyouZikyu = Math.round(_keisan.getZangyouYenYear() / _keisan.getZangyouTimeYear());
+      this.zikyu.innerText = _zangyouZikyu.toLocaleString() + "円/時";
       this.btnTweetLink.addEventListener("click", function() {
-        return _kekkaTweet(keisan.getTweetUrl());
+        return _kekkaTweet(_keisan.getTweetUrl());
       });
-      _showKaroushi(keisan.validKaroushi());
+      _showKaroushi(_keisan.validKaroushi());
       return this.modalBtn.click();
     };
 

@@ -55,17 +55,18 @@ class window.Form
 
   # 値チェック成功時の処理
   _validSuccess = ->
-    formValues = _getFormValuesList()
-    keisan = new window.Keisan(formValues)
+    _formValues = _getFormValuesList()
+    _keisan = new window.Keisan(_formValues)
     # 結果をモーダルに表示
-    @zangyouYenYear.innerText = keisan.getZangyouYenYear().toLocaleString() + "円"
-    @zangyouTimeYear.innerText = keisan.getZangyouTimeYear().toLocaleString() + "時間"
-    @zikyu.innerText = keisan.getZikyu().toLocaleString() + "円/時"
+    @zangyouYenYear.innerText = _keisan.getZangyouYenYear().toLocaleString() + "円"
+    @zangyouTimeYear.innerText = _keisan.getZangyouTimeYear().toLocaleString() + "時間"
+    _zangyouZikyu = Math.round _keisan.getZangyouYenYear() / _keisan.getZangyouTimeYear()
+    @zikyu.innerText = _zangyouZikyu.toLocaleString() + "円/時"
     # 結果をツイートボタンにクリックイベントを追加
     @btnTweetLink.addEventListener "click", ->
-      _kekkaTweet keisan.getTweetUrl()
+      _kekkaTweet _keisan.getTweetUrl()
     # 過労死認定基準値超過画像
-    _showKaroushi keisan.validKaroushi()
+    _showKaroushi _keisan.validKaroushi()
     # モーダルを表示
     @modalBtn.click()
 
