@@ -1,5 +1,6 @@
 *.DS_Store
 .sass-cache
 *.map
+*.sh
 bower_components
 node_modules
