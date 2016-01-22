@@ -15,6 +15,7 @@
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-sass": "^0.9.2",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-sitemap": "^1.2.1",
     "grunt-slim": "^0.1.0"
   }
 }

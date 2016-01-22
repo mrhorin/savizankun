@@ -2,7 +2,7 @@ module.exports = (grunt)->
   grunt.initConfig
     # package.jsonのロード(必須ではない)
     pkg: grunt.file.readJSON 'package.json'
-    # 監視
+    # grunt-contrib-watch 監視
     watch:
       coffee_assets:
         files: ['coffee/*.coffee']
@@ -16,7 +16,7 @@ module.exports = (grunt)->
       concat_js:
         files: ['public/dest/js/*.js']
         tasks: 'concat'
-    # 結合タスク
+    # grunt-contrib-concat 結合
     concat:
       files:
         src: 'public/dest/js/*.js'
@@ -49,7 +49,7 @@ module.exports = (grunt)->
           dest: 'public/'
           ext: '.html'
         ]
-    # Bower
+    # grunt-bower-task
     bower:
       install:
         options:
@@ -59,6 +59,12 @@ module.exports = (grunt)->
           verbose: false
           cleanTargetDir: true
           cleanBowerDir: false
+    # grunt-sitemap
+    sitemap:
+      dist:
+        pattern: ['public/*.html']
+        siteRoot: 'public/'
+        homepage: 'index.html'
 
     grunt.loadNpmTasks 'grunt-bower-task'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -66,5 +72,6 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-slim'
     grunt.loadNpmTasks 'grunt-contrib-concat'
     grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-sitemap'
     # タスクを登録
     grunt.registerTask 'default', ['watch']
