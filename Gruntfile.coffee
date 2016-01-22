@@ -10,9 +10,9 @@ module.exports = (grunt)->
       scss_assets:
         files: ['scss/*.scss']
         tasks: 'sass:assets'
-      haml_assets:
-        files: ['haml/*.haml']
-        tasks: 'haml:assets'
+      slim_assets:
+        files: ['slim/**/*.slim']
+        tasks: 'slim:assets'
       concat_js:
         files: ['public/dest/js/*.js']
         tasks: 'concat'
@@ -40,12 +40,12 @@ module.exports = (grunt)->
           dest: 'public/dest/css/'
           ext: '.css'
         ]
-    haml:
+    slim:
       assets:
         files: [
           expand: true
-          cwd: 'haml/'
-          src: ['./*.haml']
+          cwd: 'slim/'
+          src: ['./*.slim']
           dest: 'public/'
           ext: '.html'
         ]
@@ -63,7 +63,7 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-bower-task'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-sass'
-    grunt.loadNpmTasks 'grunt-contrib-haml'
+    grunt.loadNpmTasks 'grunt-slim'
     grunt.loadNpmTasks 'grunt-contrib-concat'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     # タスクを登録

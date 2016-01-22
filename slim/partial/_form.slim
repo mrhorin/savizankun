@@ -1,0 +1,145 @@
+/ --------------- 計算用フォーム ---------------
+form#keisan onsubmit="return false;"
+  img.img-responsive src="./img/keisan.png" style="margin: auto; padding:0px 0px 20px 0px;"
+  / 月給
+  .form-group
+    label.col-sm-4.control-label style="text-align: right" 月給
+    .input-group
+      input#gekkyu.form-control[ type="number" required autofocus min="1" ]
+      .input-group-addon 円
+    .notice.col-sm-offset-4 ※支給額から各種手当を除いた額
+  / 年間休日
+  .form-group
+    label.col-sm-4.control-label style="text-align: right" 年間休日
+    .input-group
+      input#nenkyu.form-control[ value="105" type="number" required min="0" max="364" ]
+      .input-group-addon 日
+  / 週休
+  .form-group
+    label.col-sm-4.control-label style="text-align: right" 週休
+    .input-group
+      input#syukyu.form-control[ type="number" required value="2" min="0" max="6" ]
+      .input-group-addon 日
+  / 休憩時間
+  .form-group
+    label.col-sm-4.control-label style="text-align: right" 休憩時間
+    .input-group
+      input#kyukei.form-control[ type="number" required value="60" min="0" max="1440" ]
+      .input-group-addon 分
+    .notice.col-sm-offset-4 ※分単位で入力
+  / 出勤時刻
+  .form-group
+    label.col-sm-4.control-label style="text-align: right" 出勤時刻
+    .input-group style="margin: auto;"
+      select#startWorkHour
+        option value="0" 0
+        option value="1" 1
+        option value="2" 2
+        option value="3" 3
+        option value="4" 4
+        option value="5" 5
+        option value="6" 6
+        option value="7" 7
+        option value="8" 8
+        option[ value="9" selected ] 9
+        option value="10" 10
+        option value="11" 11
+        option value="12" 12
+        option value="13" 13
+        option value="14" 14
+        option value="15" 15
+        option value="16" 16
+        option value="17" 17
+        option value="18" 18
+        option value="19" 19
+        option value="20" 20
+        option value="21" 21
+        option value="22" 22
+        option value="23" 23
+      span 時
+      select#startWorkMin
+        option value="0" 0
+        option value="15" 15
+        option value="30" 30
+        option value="45" 45
+      span 分
+  / 定時退勤時刻
+  .form-group
+    label.col-sm-4.control-label style="text-align: right"  定時退勤
+    .input-group style="margin: auto;" 
+      select#endWorkHour
+        option value="0" 0
+        option value="1" 1
+        option value="2" 2
+        option value="3" 3
+        option value="4" 4
+        option value="5" 5
+        option value="6" 6
+        option value="7" 7
+        option value="8" 8
+        option value="9"  9
+        option value="10" 10
+        option value="11" 11
+        option value="12" 12
+        option value="13" 13
+        option value="14" 14
+        option value="15" 15
+        option value="16" 16
+        option value="17" 17
+        option[ value="18" selected ] 18
+        option value="19" 19
+        option value="20" 20
+        option value="21" 21
+        option value="22" 22
+        option value="23" 23
+      span 時
+      select#endWorkMin
+        option value="0" 0
+        option value="15" 15
+        option value="30" 30
+        option value="45" 45
+      span 分
+  / 平均退勤時刻
+  .form-group
+    label.col-sm-4.control-label style="text-align: right" 平均退勤
+    .input-group style="margin: auto;" 
+      select#overEndWorkHour
+        option value="0" 0
+        option value="1" 1
+        option value="2" 2
+        option value="3" 3
+        option value="4" 4
+        option value="5" 5
+        option value="6" 6
+        option value="7" 7
+        option value="8" 8
+        option value="9"  9
+        option value="10" 10
+        option value="11" 11
+        option value="12" 12
+        option value="13" 13
+        option value="14" 14
+        option value="15" 15
+        option value="16" 16
+        option value="17" 17
+        option value="18" 18
+        option value="19" 19
+        option value="20" 20
+        option[ value="21" selected ] 21
+        option value="22" 22
+        option value="23" 23
+      span 時
+      select#overEndWorkMin
+        option value="0" 0
+        option value="15" 15
+        option value="30" 30
+        option value="45" 45
+      span 分
+    .notice.col-sm-offset-4 ※残業を含む平均的な退勤時刻を入力
+  .form-group style="text-align: center;"
+    / 計算するボタン
+    button#keisanBtn.btn.btn-primary.col-sm-offset-4 type="submit" style="margin-top: 5px; margin-bottom: -15px;"
+      i.fa.fa-hand-o-up
+      | 計算する
+    / Modal呼び出しボタン
+    button#modalBtn.btn.btn-primary.col-sm-offset-4 data-toggle="modal" data-target="#myModal" style="display: none;" Modal

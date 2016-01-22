@@ -1,0 +1,96 @@
+doctype html
+html
+  head
+    == Slim::Template.new('slim/partial/_head.slim').render
+  body onLoad="mainIniInitialize();"
+    / --------------- header ---------------
+    header
+      .container
+        row
+          .col-sm-6
+            / タイトル画像
+            img.img-responsive src="./img/savizankun.png"
+            / シェアボタン
+            ul#share
+              / Twitter
+              a
+                li#twitter
+                  i.fa.fa-twitter
+                  / span.share-count 0
+              / Facebook
+              a
+                li#fb
+                  i.fa.fa-facebook
+                  span.share-count 0
+              / Hatena
+              a
+                li#hatena
+                  span.hatena-icon B!
+                  span.share-count 0
+            / お知らせ
+            #info
+              .info-title
+                i.fa.fa-info-circle
+                | お知らせ（2015/01/05）
+              | デザインと計算アルゴリズムを大幅改変しました。
+          .col-sm-6
+            / 当サイトについて
+            #about
+              legend
+                i.fa.fa-question-circle style="margin: 0px 10px;"
+                | 当サイトについて
+              ul
+                li サービス残業代を計算できるWebサービスです。
+                li 当サイトによる計算結果はあくまで目安です。
+                li 当然ですが入力情報の収集・二次配布等は一切行っていません。安心してご利用下さい。
+                li 入力についての諸注意
+                ol
+                  li 月給は支給額から手当を除いた額を入力。
+                  li 年間休日は雇用契約書の記載通り、わからない場合は、週休２日の場合は年間105日+祝祭日+長期休暇になるので、それを目安に入力。有給休暇は含みません。
+                  li 休憩は分単位で入力。
+                  li 平均退勤時刻は、残業を含む平均的な退勤時刻を入力して下さい。
+              / その他FAQ
+              #faq style="text-align: right;"
+                a.btn.btn-default href="./faq.html" role="button" その他FAQ
+    / --------------- main ---------------
+    #main
+      .container.content
+        row
+          .col-sm-6.col-sm-offset-3
+            / --------------- form ---------------
+            == Slim::Template.new('slim/partial/_form.slim').render
+      / -------------- Modal --------------
+      #myModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        .modal-dialog role="document"
+          .modal-content
+            .modal-header
+              button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                span aria-hidden="true" &times;
+              h4#myModalLabel.modal-title 計算結果
+            .modal-body
+              / 結果テーブル
+              table#kekka
+                tr
+                  th 年間の残業代
+                  td#zangyou-yen-year
+                tr
+                  th 年間の残業時間
+                  td#zangyou-time-year
+                tr
+                  th 残業代の時給換算
+                  td#zikyu
+              / 過労死基準超過
+              img#karoushi.img-responsive src="./img/karoushi.png" style="display: none;"
+            .modal-footer
+              / 結果をツイートボタン
+              a#btn-tweet-link href="" style="text-decoration: none; margin-right: 10px;"
+                button.btn.btn-primary.btn-kekka.btn-tweet type="button"
+                  i.fa.fa-twitter
+                  | 結果をツイート
+              / 閉じるボタン
+              button.btn.btn-default.btn-kekka type="button" data-dismiss="modal" 閉じる
+
+    / ------------ footer ------------
+    == Slim::Template.new('slim/partial/_footer.slim').render
+    / ------------ JavaScript ------------
+    == Slim::Template.new('slim/partial/_js_files.slim').render

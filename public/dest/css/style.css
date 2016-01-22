@@ -41,7 +41,8 @@ ul#share {
   margin: 0px;
   padding: 0px; }
   ul#share a {
-    text-decoration: none; }
+    text-decoration: none;
+    margin-right: 8px; }
 
 ul#share > a > li {
   display: inline-block;
