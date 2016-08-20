@@ -73,7 +73,7 @@
         type: 'GET',
         success: (function(_this) {
           return function(res) {
-            return _this.fb.children[1].innerText = res.shares;
+            return _this.fb.children[1].innerText = res["share"]["share_count"] ? res["share"]["share_count"] : "-";
           };
         })(this),
         error: function(error) {
@@ -89,7 +89,7 @@
         type: 'GET',
         success: (function(_this) {
           return function(count) {
-            return _this.hatena.children[1].innerText = count;
+            return _this.hatena.children[1].innerText = count ? count : "-";
           };
         })(this),
         error: function(error) {

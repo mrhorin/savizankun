@@ -343,7 +343,7 @@
         type: 'GET',
         success: (function(_this) {
           return function(res) {
-            return _this.fb.children[1].innerText = res.shares;
+            return _this.fb.children[1].innerText = res["share"]["share_count"] ? res["share"]["share_count"] : "-";
           };
         })(this),
         error: function(error) {
@@ -359,7 +359,7 @@
         type: 'GET',
         success: (function(_this) {
           return function(count) {
-            return _this.hatena.children[1].innerText = count;
+            return _this.hatena.children[1].innerText = count ? count : "-";
           };
         })(this),
         error: function(error) {
@@ -369,6 +369,34 @@
     };
 
     return Share;
+
+  })();
+
+}).call(this);
+
+(function() {
+  window.Valid = (function() {
+    function Valid(keisan) {
+      this.keisan = keisan;
+    }
+
+    Valid.prototype.check24hOver = function() {
+      if (this.keisan.rodoTime["zitu"] + this.keisan.formValues["kyukei"] / 60 < 24) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    Valid.prototype.check0Syotei = function() {
+      if (this.keisan.rodoTime["syotei"] > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    return Valid;
 
   })();
 

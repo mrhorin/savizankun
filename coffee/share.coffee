@@ -67,7 +67,7 @@ class window.Share
       dataType: 'jsonp',
       type: 'GET',
       success: (res) =>
-        @fb.children[1].innerText = res.shares
+        @fb.children[1].innerText = if res["share"]["share_count"] then res["share"]["share_count"] else "-"
       ,
       error: (error) ->
         console.log error
@@ -80,7 +80,7 @@ class window.Share
       dataType: 'jsonp',
       type: 'GET',
       success: (count) =>
-        @hatena.children[1].innerText = count
+        @hatena.children[1].innerText = if count then count else "-"
       ,
       error: (error) ->
         console.log error
