@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    == Slim::Template.new('slim/partial/_head.slim').render
+    == Slim::Template.new('src/slim/partial/_head.slim').render
   body onLoad="mainIniInitialize();"
   / --------------- header ---------------
   header
@@ -100,6 +100,6 @@ html
                   また、計算過程で生じた小数点以下の数値は四捨五入し、一ヶ月を4.4週として計算し、閏年は考慮していません。
           a href="./" 計算ページに戻る
   / ------------ footer ------------
-  == Slim::Template.new('slim/partial/_footer.slim').render
+  == Slim::Template.new('src/slim/partial/_footer.slim').render
   / ------------ JavaScript ------------
-  == Slim::Template.new('slim/partial/_js_files.slim').render
+  == Slim::Template.new('src/slim/partial/_js_files.slim').render

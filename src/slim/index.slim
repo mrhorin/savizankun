@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    == Slim::Template.new('slim/partial/_head.slim').render
+    == Slim::Template.new('src/slim/partial/_head.slim').render
   body onLoad="mainIniInitialize();"
     / --------------- header ---------------
     header
@@ -58,7 +58,7 @@ html
         row
           .col-sm-6.col-sm-offset-3
             / --------------- form ---------------
-            == Slim::Template.new('slim/partial/_form.slim').render
+            == Slim::Template.new('src/slim/partial/_form.slim').render
       / -------------- Modal --------------
       #myModal.modal.fade tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         .modal-dialog role="document"
@@ -91,6 +91,6 @@ html
               button.btn.btn-default.btn-kekka type="button" data-dismiss="modal" 閉じる
 
     / ------------ footer ------------
-    == Slim::Template.new('slim/partial/_footer.slim').render
+    == Slim::Template.new('src/slim/partial/_footer.slim').render
     / ------------ JavaScript ------------
-    == Slim::Template.new('slim/partial/_js_files.slim').render
+    == Slim::Template.new('src/slim/partial/_js_files.slim').render
