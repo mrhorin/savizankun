@@ -37,7 +37,7 @@ module.exports = (grunt)->
           expand: true
           cwd: 'src/scss'
           src: ['./*.scss']
-          dest: 'dest/css/'
+          dest: 'public/'
           ext: '.css'
         ]
     slim:
@@ -49,16 +49,21 @@ module.exports = (grunt)->
           dest: 'public/'
           ext: '.html'
         ]
+    copy:
+      main:
+        expand: true
+        cwd: './src/img'
+        src: ['**']
+        dest: './public/img'
     # grunt-bower-task
     bower:
       install:
         options:
-          targetDir: 'public/lib/'
-          layout: 'byComponent'
-          install: true
-          verbose: false
-          cleanTargetDir: true
-          cleanBowerDir: false
+          targetDir: './public/lib'
+          cleanTargetDir: 'true'
+          copy: true
+          layout: 'byType'
+          verbose: true
     # grunt-sitemap
     sitemap:
       dist:
@@ -73,6 +78,7 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-contrib-concat'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-sitemap'
+    grunt.loadNpmTasks 'grunt-contrib-copy'
     # タスクを登録
     grunt.registerTask 'default', ['watch']
-    grunt.registerTask('build', ['coffee', 'concat', 'sass', 'slim', 'sitemap', 'bower'])
+    grunt.registerTask('build', ['coffee', 'concat', 'sass', 'slim', 'copy', 'sitemap', 'bower:install'])
