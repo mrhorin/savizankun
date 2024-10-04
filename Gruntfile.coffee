@@ -5,13 +5,13 @@ module.exports = (grunt)->
     # grunt-contrib-watch 監視
     watch:
       coffee_assets:
-        files: ['coffee/*.coffee']
+        files: ['src/coffee/*.coffee']
         tasks: 'coffee:assets'
       scss_assets:
-        files: ['scss/*.scss']
+        files: ['src/scss/*.scss']
         tasks: 'sass:assets'
       slim_assets:
-        files: ['slim/**/*.slim']
+        files: ['src/slim/**/*.slim']
         tasks: 'slim:assets'
       concat_js:
         files: ['public/dest/js/*.js']
@@ -26,7 +26,7 @@ module.exports = (grunt)->
       assets:
         files: [
           expand: true,
-          cwd: 'coffee'
+          cwd: 'src/coffee'
           src: ['./*.coffee']
           dest: 'public/dest/js'
           ext: '.js'
@@ -35,7 +35,7 @@ module.exports = (grunt)->
       assets:
         files: [
           expand: true
-          cwd: 'scss/'
+          cwd: 'src/scss'
           src: ['./*.scss']
           dest: 'public/dest/css/'
           ext: '.css'
@@ -44,7 +44,7 @@ module.exports = (grunt)->
       assets:
         files: [
           expand: true
-          cwd: 'slim/'
+          cwd: 'src/slim'
           src: ['./*.slim']
           dest: 'public/'
           ext: '.html'
