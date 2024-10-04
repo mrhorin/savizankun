@@ -75,3 +75,4 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-sitemap'
     # タスクを登録
     grunt.registerTask 'default', ['watch']
+    grunt.registerTask('build', ['coffee', 'concat', 'sass', 'slim', 'sitemap', 'bower'])

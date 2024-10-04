@@ -4,3 +4,5 @@
 *.sh
 bower_components
 node_modules
+public/*
+!public/.gitkeep

@@ -1,10 +1,7 @@
 {
   "name": "savizankun",
   "version": "0.0.0",
-  "authors": [
-    "mrhorin <u0813mb@gmail.com>"
-  ],
-  "description": "savizankun js version.",
+  "description": "savizankun is a web service that can calculate unpaid overtime.",
   "license": "MIT",
   "ignore": [
     "**/.*",
