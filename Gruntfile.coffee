@@ -14,12 +14,12 @@ module.exports = (grunt)->
         files: ['src/slim/**/*.slim']
         tasks: 'slim:assets'
       concat_js:
-        files: ['public/dest/js/*.js']
+        files: ['dest/js/*.js']
         tasks: 'concat'
     # grunt-contrib-concat 結合
     concat:
       files:
-        src: 'public/dest/js/*.js'
+        src: 'dest/js/*.js'
         dest: 'public/scripts.js'
     # コンパイル
     coffee:
@@ -28,7 +28,7 @@ module.exports = (grunt)->
           expand: true,
           cwd: 'src/coffee'
           src: ['./*.coffee']
-          dest: 'public/dest/js'
+          dest: 'dest/js'
           ext: '.js'
         ]
     sass:
@@ -37,7 +37,7 @@ module.exports = (grunt)->
           expand: true
           cwd: 'src/scss'
           src: ['./*.scss']
-          dest: 'public/dest/css/'
+          dest: 'dest/css/'
           ext: '.css'
         ]
     slim:
