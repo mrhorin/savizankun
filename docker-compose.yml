@@ -6,4 +6,4 @@ services:
     volumes:
       - .:/savizankun
     tty: true
-    # command: bash -c "node index.js"
+    command: bash -c "yarn run build && yarn run start"
