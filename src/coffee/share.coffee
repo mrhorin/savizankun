@@ -6,7 +6,7 @@ class window.Share
   constructor: ->
     _setSelector()
     _setEventListener()
-    _setShareCounter()
+    # _setShareCounter()
 
   # セレクタをセット
   _setSelector = ->
