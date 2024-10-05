@@ -1,7 +1,7 @@
 # シェアボタン関連クラス
 
 class window.Share
-  URL = 'http://savizankun.com'
+  URL = 'https://savizankun.mrhori.org'
 
   constructor: ->
     _setSelector()
@@ -32,7 +32,7 @@ class window.Share
 
   # Twitterボタンクリック
   _shareTwitter = ->
-    _url = "http://twitter.com/share?url=http://savizankun.com&text=サビ残くん -あなたの残業代計算します！"
+    _url = "https://twitter.com/share?url=https://savizankun.mrhori.org&text=サビ残くん -あなたの残業代計算します！"
     w_size = 650
     h_size = 450
     l_position = Number (window.screen.width-w_size)/2
@@ -42,7 +42,7 @@ class window.Share
 
   # FBボタンクリック
   _shareFacebook = ->
-    _url = "http://www.facebook.com/sharer.php?u=http://savizankun.com&t=サビ残くん -あなたの残業代計算します！-"
+    _url = "https://www.facebook.com/sharer.php?u=https://savizankun.mrhori.org&t=サビ残くん -あなたの残業代計算します！-"
     w_size = 550
     h_size = 450
     l_position = Number (window.screen.width-w_size)/2
@@ -52,7 +52,7 @@ class window.Share
 
   # はてブボタンクリック
   _shareHatena = ->
-    _url = "http://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=http://savizankun.com"
+    _url = "https://b.hatena.ne.jp/add?mode=confirm&title='サビ残くん -あなたの残業代計算します！-'&url=https://savizankun.mrhori.org"
     w_size = 650
     h_size = 450
     l_position = Number (window.screen.width-w_size)/2
@@ -63,7 +63,7 @@ class window.Share
   # FBのシェアボタンのカウンターをセット
   _setFbCounter = ->
     $.ajax {
-      url: 'http://graph.facebook.com/?id=' + encodeURIComponent(URL),
+      url: 'https://graph.facebook.com/?id=' + encodeURIComponent(URL),
       dataType: 'jsonp',
       type: 'GET',
       success: (res) =>
@@ -76,7 +76,7 @@ class window.Share
   # はてなのシェアボタンのカウンターをセット
   _setHatenaCounter = ->
     $.ajax {
-      url: 'http://api.b.st-hatena.com/entry.count?url=' + encodeURIComponent(URL),
+      url: 'https://api.b.st-hatena.com/entry.count?url=' + encodeURIComponent(URL),
       dataType: 'jsonp',
       type: 'GET',
       success: (count) =>
